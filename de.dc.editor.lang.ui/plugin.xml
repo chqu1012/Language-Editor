@@ -21,5 +21,14 @@
                          name="Language Konfiguration">
                    </page>
                 </extension>
+                <extension
+                      point="org.eclipse.ui.views">
+                   <view
+                         class="de.dc.editor.lang.ui.editors.LanguageView"
+                         id="de.dc.editor.lang.ui.LanguageView"
+                         name="LanguageView"
+                         restorable="true">
+                   </view>
+                </extension>
 
 </plugin>

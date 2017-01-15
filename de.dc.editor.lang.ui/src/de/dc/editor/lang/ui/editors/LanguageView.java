@@ -2,7 +2,6 @@ package de.dc.editor.lang.ui.editors;
 
 import java.util.Collection;
 import java.util.HashMap;
-import java.util.List;
 
 import org.eclipse.emf.common.command.BasicCommandStack;
 import org.eclipse.emf.common.util.URI;
@@ -12,7 +11,6 @@ import org.eclipse.emf.edit.provider.ComposedAdapterFactory;
 import org.eclipse.emf.edit.provider.ReflectiveItemProviderAdapterFactory;
 import org.eclipse.emf.edit.provider.resource.ResourceItemProviderAdapterFactory;
 import org.eclipse.emf.edit.ui.action.CreateChildAction;
-import org.eclipse.emf.edit.ui.celleditor.AdapterFactoryTreeEditor;
 import org.eclipse.emf.edit.ui.provider.AdapterFactoryContentProvider;
 import org.eclipse.emf.edit.ui.provider.AdapterFactoryLabelProvider;
 import org.eclipse.emf.edit.ui.view.ExtendedPropertySheetPage;
@@ -22,33 +20,26 @@ import org.eclipse.jface.action.MenuManager;
 import org.eclipse.jface.viewers.DoubleClickEvent;
 import org.eclipse.jface.viewers.IDoubleClickListener;
 import org.eclipse.jface.viewers.ISelection;
-import org.eclipse.jface.viewers.ISelectionChangedListener;
 import org.eclipse.jface.viewers.IStructuredSelection;
-import org.eclipse.jface.viewers.SelectionChangedEvent;
 import org.eclipse.jface.viewers.StructuredSelection;
 import org.eclipse.jface.viewers.TreeViewer;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.graphics.RGB;
-import org.eclipse.swt.layout.FillLayout;
 import org.eclipse.swt.widgets.ColorDialog;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Menu;
 import org.eclipse.swt.widgets.Shell;
-import org.eclipse.swt.widgets.TabFolder;
-import org.eclipse.swt.widgets.TabItem;
-import org.eclipse.ui.IActionBars;
-import org.eclipse.ui.PlatformUI;
 import org.eclipse.ui.dialogs.FilteredTree;
 import org.eclipse.ui.dialogs.PatternFilter;
-import org.eclipse.ui.editors.text.TextEditor;
+import org.eclipse.ui.part.ViewPart;
 import org.eclipse.ui.views.properties.IPropertySheetPage;
 import org.eclipse.ui.views.properties.PropertySheetPage;
 
 import de.dc.editor.lang.model.Color;
 import de.dc.editor.lang.model.provider.ModelItemProviderAdapterFactory;
 
-public class LanguageEditor extends TextEditor implements IMenuListener{
-	
+public class LanguageView extends ViewPart implements IMenuListener{
+
 	private ComposedAdapterFactory adapterFactory;
 	private AdapterFactoryEditingDomain editingDomain;
 	private TreeViewer viewer;
@@ -56,21 +47,12 @@ public class LanguageEditor extends TextEditor implements IMenuListener{
 	IPropertySheetPage page;
 	private AdapterFactoryContentProvider contentProvider;
 
-	public LanguageEditor() {
-		setSourceViewerConfiguration(new LanguageConfiguration());
-	}
-	
 	@Override
 	public void createPartControl(Composite parent) {
-		TabFolder tabFolder = new TabFolder(parent, SWT.BOTTOM);
-		
-		Composite codeComposite = createTabItem(tabFolder, "Code");
-		Composite langDefComposite = createTabItem(tabFolder, "Language Definition");
-		
 		initializeEditingDomain();
 		
 		PatternFilter filter = new PatternFilter();
-		FilteredTree tree = new FilteredTree(langDefComposite, SWT.MULTI | SWT.H_SCROLL
+		FilteredTree tree = new FilteredTree(parent, SWT.MULTI | SWT.H_SCROLL
 				| SWT.V_SCROLL, filter, true);
 
 		viewer = tree.getViewer();
@@ -101,27 +83,16 @@ public class LanguageEditor extends TextEditor implements IMenuListener{
 
 		hookContextMenu(viewer);
 		
-		getSite().setSelectionProvider(viewer);
+		getViewSite().setSelectionProvider(viewer);
+//		PlatformUI.getWorkbench().getActiveWorkbenchWindow().getSelectionService().
 		
 		if(ILanguageConstants.MODEL_PATH!=null){
 			URI resourceURI = URI.createFileURI(ILanguageConstants.MODEL_PATH);
 			editingDomain.getResourceSet().getResource(resourceURI, true);
 			viewer.setInput(editingDomain.getResourceSet());
 			viewer.setSelection(new StructuredSelection(editingDomain.getResourceSet().getResources().get(0)), true);
-		}
-		
-		super.createPartControl(codeComposite);
+		}		
 	}
-
-	private Composite createTabItem(TabFolder tabFolder, String name) {
-		TabItem item = new TabItem(tabFolder, SWT.NONE);
-		item.setText(name);
-		Composite composite = new Composite(tabFolder, SWT.NONE);
-		composite.setLayout(new FillLayout());
-		item.setControl(composite);
-		return composite;
-	}
-	
 	protected void initializeEditingDomain() {
 		adapterFactory = new ComposedAdapterFactory(ComposedAdapterFactory.Descriptor.Registry.INSTANCE);
 		adapterFactory.addAdapterFactory(new ResourceItemProviderAdapterFactory());
@@ -169,4 +140,8 @@ public class LanguageEditor extends TextEditor implements IMenuListener{
 		propertySheetPage.setPropertySourceProvider(contentProvider);
 		return propertySheetPage;
 	}
+	@Override
+	public void setFocus() {
+	}
+
 }
