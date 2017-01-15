@@ -2,7 +2,11 @@
 This editor is for specifing the color of the keyword and the autocompletion of the editor. So each user can use one file to colorize his code at there own.
 
 ##Features
+Key Highlighting
 ![Key Highlighting](https://github.com/chqu1012/Language-Editor/blob/master/de.dc.editor.lang.wiki/key-highlighting.png "Key Highlighting")
+
+Content proposals
+![Content Proposals](https://github.com/chqu1012/Language-Editor/blob/master/de.dc.editor.lang.wiki/content-proposals.png "Content Proposalsg")
 
 ##Download
 [v0.1.0] coming soon
