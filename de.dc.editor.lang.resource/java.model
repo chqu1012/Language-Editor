@@ -26,7 +26,7 @@
   </keywordGroups>
   <keywordGroups name="Methods">
     <color g="128" b="128"/>
-    <keyList value="TABLE_ViewCrystalReportWithParams"/>
+    <keyList name="TABLE" value="TABLE_ViewCrystalReportWithParams"/>
     <keyList value="TABLE_PrintCrystalReport"/>
     <keyList value="TABLE_ExportCrystalReport"/>
   </keywordGroups>

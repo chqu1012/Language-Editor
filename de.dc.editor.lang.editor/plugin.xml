@@ -108,5 +108,29 @@
             name="Extended Model Editor">
       </editor>
    </extension>
+   <extension
+         id="ECP"
+         point="org.eclipse.core.runtime.products">
+      <product
+            application="org.eclipse.emf.ecp.application.e3.application"
+            name="%productName">
+         <property
+               name="windowImages"
+               value="platform:/plugin/org.eclipse.emf.ecp.ui.e3/icons/bricks.png">
+         </property>
+         <property
+               name="aboutText"
+               value="%productBlurb">
+         </property>
+         <property
+               name="aboutImage"
+               value="icons/eclipse_lg.gif">
+         </property>
+         <property
+               name="appName"
+               value="%productName">
+         </property>
+      </product>
+   </extension>
 
 </plugin>

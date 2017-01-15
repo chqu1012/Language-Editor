@@ -12,6 +12,14 @@
             id="de.dc.editor.lang.ui.editors.LangEditor"
             name="Language Editor">
       </editor>
+      <editor
+            class="de.dc.editor.lang.ui.editors.generic.gfEditor"
+            contributorClass="de.dc.editor.lang.ui.editors.generic.gfEditorContributor"
+            extensions="lang"
+            icon="icons/sample.gif"
+            id="de.dc.editor.lang.ui.editors.GenericEditor"
+            name="Generic Editor">
+      </editor>
    </extension>
                 <extension
                       point="org.eclipse.ui.preferencePages">

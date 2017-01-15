@@ -5,7 +5,8 @@
     runtimeJar="true" modelName="Editor" updateClasspath="false" rootExtendsClass="org.eclipse.emf.ecore.impl.MinimalEObjectImpl$Container"
     testsDirectory="" booleanFlagsField="eFlags" booleanFlagsReservedBits="8" importerID="org.eclipse.emf.ecore.xcore.importer"
     containmentProxies="true" complianceLevel="8.0" language="en" usedGenPackages="../../org.eclipse.emf.ecore/model/Ecore.genmodel#//ecore"
-    operationReflection="true" importOrganizing="true" decoration="Live" oSGiCompatible="true">
+    operationReflection="true" runtimePlatform="RCP" importOrganizing="true" decoration="Live"
+    oSGiCompatible="true">
   <genAnnotations source="http://www.eclipse.org/emf/2002/GenModel/exporter/org.eclipse.xsd.ecore.exporter">
     <genAnnotations source="selectedPackages">
       <details key="http://www.eclipse.org/emf/2002/Ecore" value="Ecore.xsd"/>
@@ -22,7 +23,7 @@
   <modelPluginVariables>org.eclipse.xtext.xbase.lib</modelPluginVariables>
   <modelPluginVariables>org.eclipse.emf.ecore.xcore.lib</modelPluginVariables>
   <genPackages prefix="Model" basePackage="de.dc.editor.lang" disposableProviderFactory="true"
-      ecorePackage="model.ecore#/">
+      multipleEditorPages="false" ecorePackage="model.ecore#/">
     <genClasses ecoreClass="model.ecore#//NamedElement">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute model.ecore#//NamedElement/name"/>
     </genClasses>
