@@ -31,7 +31,6 @@ public class LanguageScanner extends RuleBasedScanner{
 
 	public LanguageScanner() {
 		try {
-			System.out.println(MODEL_PATH);
 			if(MODEL_PATH==null || MODEL_PATH.equals("")){
 				FileDialog fd = new FileDialog(new Shell(), SWT.OPEN);
 				String open = fd.open();
