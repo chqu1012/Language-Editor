@@ -1,5 +1,6 @@
 package de.dc.editor.lang.ui.editors;
 
+import java.util.Collection;
 import java.util.HashMap;
 
 import org.eclipse.emf.common.command.BasicCommandStack;
@@ -9,10 +10,13 @@ import org.eclipse.emf.edit.domain.AdapterFactoryEditingDomain;
 import org.eclipse.emf.edit.provider.ComposedAdapterFactory;
 import org.eclipse.emf.edit.provider.ReflectiveItemProviderAdapterFactory;
 import org.eclipse.emf.edit.provider.resource.ResourceItemProviderAdapterFactory;
+import org.eclipse.emf.edit.ui.action.CreateChildAction;
 import org.eclipse.emf.edit.ui.celleditor.AdapterFactoryTreeEditor;
 import org.eclipse.emf.edit.ui.provider.AdapterFactoryContentProvider;
 import org.eclipse.emf.edit.ui.provider.AdapterFactoryLabelProvider;
-import org.eclipse.emf.edit.ui.view.ExtendedPropertySheetPage;
+import org.eclipse.jface.action.IMenuListener;
+import org.eclipse.jface.action.IMenuManager;
+import org.eclipse.jface.action.MenuManager;
 import org.eclipse.jface.viewers.DoubleClickEvent;
 import org.eclipse.jface.viewers.IDoubleClickListener;
 import org.eclipse.jface.viewers.ISelection;
@@ -24,6 +28,7 @@ import org.eclipse.swt.graphics.RGB;
 import org.eclipse.swt.layout.FillLayout;
 import org.eclipse.swt.widgets.ColorDialog;
 import org.eclipse.swt.widgets.Composite;
+import org.eclipse.swt.widgets.Menu;
 import org.eclipse.swt.widgets.Shell;
 import org.eclipse.swt.widgets.TabFolder;
 import org.eclipse.swt.widgets.TabItem;
@@ -34,10 +39,11 @@ import org.eclipse.ui.editors.text.TextEditor;
 import de.dc.editor.lang.model.Color;
 import de.dc.editor.lang.model.provider.ModelItemProviderAdapterFactory;
 
-public class LanguageEditor  extends TextEditor{
+public class LanguageEditor extends TextEditor implements IMenuListener{
 	
 	private ComposedAdapterFactory adapterFactory;
 	private AdapterFactoryEditingDomain editingDomain;
+	private TreeViewer viewer;
 	
 	public LanguageEditor() {
 		setSourceViewerConfiguration(new LanguageConfiguration());
@@ -56,7 +62,7 @@ public class LanguageEditor  extends TextEditor{
 		FilteredTree tree = new FilteredTree(langDefComposite, SWT.MULTI | SWT.H_SCROLL
 				| SWT.V_SCROLL, filter, true);
 
-		TreeViewer viewer = tree.getViewer();
+		viewer = tree.getViewer();
 		viewer.setContentProvider(new AdapterFactoryContentProvider(adapterFactory));
 		viewer.setLabelProvider(new AdapterFactoryLabelProvider(adapterFactory));
 		new AdapterFactoryTreeEditor(viewer.getTree(), adapterFactory);
@@ -82,6 +88,8 @@ public class LanguageEditor  extends TextEditor{
 			}
 		});
 
+		hookContextMenu(viewer);
+		
 		getSite().setSelectionProvider(viewer);
 		
 		if(ILanguageConstants.MODEL_PATH!=null){
@@ -110,5 +118,25 @@ public class LanguageEditor  extends TextEditor{
 		adapterFactory.addAdapterFactory(new ReflectiveItemProviderAdapterFactory());
 		BasicCommandStack commandStack = new BasicCommandStack();
 		editingDomain = new AdapterFactoryEditingDomain(adapterFactory, commandStack, new HashMap<Resource, Boolean>());
+	}
+	
+	private void hookContextMenu(TreeViewer viewer){
+		MenuManager menuManager = new MenuManager();
+		menuManager.setRemoveAllWhenShown(true);
+		menuManager.addMenuListener(this);
+		Menu menu = menuManager.createContextMenu(viewer.getTree());
+		viewer.getTree().setMenu(menu);
+	}
+
+	@Override
+	public void menuAboutToShow(IMenuManager manager) {
+		IStructuredSelection ss = (IStructuredSelection)viewer.getSelection();
+		Object firstElement = ss.getFirstElement();
+		MenuManager childMenu = new MenuManager("New Child");
+		manager.add(childMenu);
+		Collection<?> newChildDescriptors = editingDomain.getNewChildDescriptors(firstElement, null);
+		for (Object descriptor : newChildDescriptors) {
+			childMenu.add(new CreateChildAction(editingDomain, ss, descriptor));
+		}
 	}
 }

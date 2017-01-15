@@ -187,11 +187,11 @@ public class ModelActionBarContributor
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	@Override
-	public void contributeToToolBar(IToolBarManager toolBarManager) {
-		toolBarManager.add(new Separator("model-settings"));
-		toolBarManager.add(new Separator("model-additions"));
-	}
+//	@Override
+//	public void contributeToToolBar(IToolBarManager toolBarManager) {
+//		toolBarManager.add(new Separator("model-settings"));
+//		toolBarManager.add(new Separator("model-additions"));
+//	}
 
 	/**
 	 * This adds to the menu bar a menu and some separators for editor additions,

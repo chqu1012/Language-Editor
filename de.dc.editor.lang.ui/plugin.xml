@@ -6,6 +6,7 @@
          point="org.eclipse.ui.editors">
       <editor
             class="de.dc.editor.lang.ui.editors.LanguageEditor"
+            contributorClass="de.dc.editor.lang.ui.editors.ModelActionBarContributor"
             extensions="lang"
             icon="icons/sample.gif"
             id="de.dc.editor.lang.ui.editors.LangEditor"
