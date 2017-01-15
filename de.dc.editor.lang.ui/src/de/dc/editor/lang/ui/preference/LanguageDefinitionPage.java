@@ -31,6 +31,7 @@ import org.eclipse.ui.PlatformUI;
 
 import de.dc.editor.lang.model.LanguageDefinition;
 import de.dc.editor.lang.model.provider.ModelItemProviderAdapterFactory;
+import de.dc.editor.lang.ui.editors.ILanguageConstants;
 import de.dc.editor.lang.ui.file.LangFile;
 import org.eclipse.swt.widgets.Link;
 
@@ -73,7 +74,7 @@ public class LanguageDefinitionPage extends PreferencePage implements IWorkbench
 		
 		text = new Text(container, SWT.BORDER);
 		text.setLayoutData(new GridData(SWT.FILL, SWT.CENTER, true, false, 1, 1));
-		String path = PlatformUI.getPreferenceStore().getString("language.definition.path");
+		String path = PlatformUI.getPreferenceStore().getString(ILanguageConstants.MODEL_PATH);
 		System.out.println(path);
 		if(path!=null){
 			text.setText(path);
