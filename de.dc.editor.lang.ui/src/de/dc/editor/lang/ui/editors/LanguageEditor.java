@@ -44,10 +44,13 @@ import org.eclipse.swt.widgets.Shell;
 import org.eclipse.swt.widgets.TabFolder;
 import org.eclipse.swt.widgets.TabItem;
 import org.eclipse.ui.IActionBars;
+import org.eclipse.ui.IViewPart;
 import org.eclipse.ui.PlatformUI;
 import org.eclipse.ui.dialogs.FilteredTree;
 import org.eclipse.ui.dialogs.PatternFilter;
 import org.eclipse.ui.editors.text.TextEditor;
+import org.eclipse.ui.views.contentoutline.ContentOutlinePage;
+import org.eclipse.ui.views.contentoutline.IContentOutlinePage;
 import org.eclipse.ui.views.properties.IPropertySheetPage;
 import org.eclipse.ui.views.properties.PropertySheetPage;
 
@@ -61,6 +64,8 @@ public class LanguageEditor extends TextEditor implements IMenuListener{
 	private TreeViewer viewer;
 	 
 	IPropertySheetPage page;
+	ContentOutlinePage outline;
+	
 	private AdapterFactoryContentProvider contentProvider;
 
 	public LanguageEditor() {
@@ -108,7 +113,8 @@ public class LanguageEditor extends TextEditor implements IMenuListener{
 
 		hookContextMenu(viewer);
 		
-		getSite().setSelectionProvider(viewer);
+//		getSite().setSelectionProvider(viewer);
+//		getEditorSite().setSelectionProvider(viewer);
 		
 		if(ILanguageConstants.MODEL_PATH!=null){
 			URI resourceURI = URI.createFileURI(ILanguageConstants.MODEL_PATH);
@@ -172,7 +178,13 @@ public class LanguageEditor extends TextEditor implements IMenuListener{
 				page = getPropertySheetPage();
 			}
 			return page;
-		}
+		}else if (IContentOutlinePage.class.equals(adapter)) {
+	         if (outline == null) {
+	             outline = new ContentOutlinePage() {
+				}; //CoolLanguageContentOutlinePage(getDocumentProvider(), this);
+	          }
+	          return outline;
+	       }
 		return super.getAdapter(adapter);
 	}
 	

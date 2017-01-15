@@ -100,6 +100,13 @@
             class="de.dc.editor.lang.model.presentation.ModelEditor"
             contributorClass="de.dc.editor.lang.model.presentation.ModelActionBarContributor">
       </editor>
+      <editor
+            class="org.eclipse.emfforms.spi.editor.GenericEditor"
+            default="false"
+            icon="icons/full/obj16/ModelModelFile.gif"
+            id="de.dc.editor.lang.editor.GenericEditor"
+            name="Extended Model Editor">
+      </editor>
    </extension>
 
 </plugin>

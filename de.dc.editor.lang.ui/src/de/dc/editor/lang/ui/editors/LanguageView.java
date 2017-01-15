@@ -59,6 +59,9 @@ import de.dc.editor.lang.model.Template;
 import de.dc.editor.lang.model.provider.ModelItemProviderAdapterFactory;
 
 public class LanguageView extends ViewPart implements IMenuListener {
+	
+	public static final String ID = "de.dc.editor.lang.ui.LanguageView";
+	
 	public LanguageView() {
 	}
 
@@ -135,7 +138,7 @@ public class LanguageView extends ViewPart implements IMenuListener {
 		getViewSite().setSelectionProvider(viewer);
 		
 		Composite composite = new Composite(parent, SWT.NONE);
-		composite.setLayout(new GridLayout(2, false));
+		composite.setLayout(new GridLayout(3, false));
 		
 		Label lblTemplate = new Label(composite, SWT.NONE);
 		lblTemplate.setText("Template");
@@ -151,18 +154,24 @@ public class LanguageView extends ViewPart implements IMenuListener {
 						Template template = (Template) ss.getFirstElement() ;
 						template.setPattern(text.getText());
 					}					
+					btnApply.setEnabled(false);
 				}
 			}
 		});
 		btnApply.setText("Apply");
 		btnApply.setEnabled(false);
-		btnApply.addSelectionListener(new SelectionAdapter() {
+		
+		Button btnVariable = new Button(composite, SWT.NONE);
+		btnVariable.addSelectionListener(new SelectionAdapter() {
 			@Override
-			public void widgetDefaultSelected(SelectionEvent e) {
-				super.widgetDefaultSelected(e);
-				btnApply.setEnabled(false);
+			public void widgetSelected(SelectionEvent e) {
+				int caretPosition = text.getCaretPosition();
+				text.insert("${NAME}");
+				text.forceFocus();
+				text.setSelection(caretPosition+2, caretPosition+6);
 			}
 		});
+		btnVariable.setText("Variable");
 		
 		text = new Text(parent, SWT.BORDER | SWT.V_SCROLL | SWT.MULTI);
 		GridData gd_text = new GridData(SWT.FILL, SWT.FILL, true, false, 1, 1);
