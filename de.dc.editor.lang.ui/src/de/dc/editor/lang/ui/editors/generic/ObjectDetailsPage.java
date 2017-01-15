@@ -1,10 +1,3 @@
-/*
- * ObjectDetailsPage.java
- * Created on Oct 23, 2004
- * 
- * generic ObjectDetailsPage 
- * 
- */
 package de.dc.editor.lang.ui.editors.generic;
 
 import java.util.ArrayList;
@@ -49,11 +42,6 @@ import org.eclipse.ui.forms.widgets.Section;
 import org.eclipse.ui.forms.widgets.TableWrapData;
 import org.eclipse.ui.forms.widgets.TableWrapLayout;
 
-/**
- * @author swb
- *
- */
-
 public class 
 ObjectDetailsPage 
 	implements 
@@ -86,14 +74,7 @@ ObjectDetailsPage
 			ourEditor.getSite().getPage().addPartListener(this);
 	}
 
-	/* (non-Javadoc)
-	 * @see org.eclipse.ui.forms.
-	 * 	IDetailsPage#createContents(org.eclipse.swt.widgets.Composite)
-	 */
 	public void createContents(Composite parent) {	
-		if (debug) System.out.print("ObjectDetailsPage.createContents: ");		
-		// setup
-		
 		// layout
 		TableWrapLayout layout = new TableWrapLayout();
 		layout.topMargin = 5;

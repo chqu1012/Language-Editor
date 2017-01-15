@@ -27,9 +27,12 @@ import org.eclipse.swt.SWT;
 import org.eclipse.swt.events.SelectionAdapter;
 import org.eclipse.swt.events.SelectionEvent;
 import org.eclipse.swt.graphics.Image;
+import org.eclipse.swt.graphics.RGB;
 import org.eclipse.swt.layout.*;
 import org.eclipse.swt.widgets.*;
 import org.eclipse.ui.*;
+import org.eclipse.ui.dialogs.FilteredTree;
+import org.eclipse.ui.dialogs.PatternFilter;
 import org.eclipse.ui.forms.*;
 import org.eclipse.ui.forms.editor.FormEditor;
 import org.eclipse.ui.forms.editor.FormPage;
@@ -38,6 +41,8 @@ import org.eclipse.ui.forms.widgets.*;
 import org.eclipse.ui.views.properties.IPropertyDescriptor;
 import org.eclipse.ui.views.properties.IPropertySource;
 import org.eclipse.ui.views.properties.IPropertySourceProvider;
+
+import de.dc.editor.lang.model.Color;
 
 
 
@@ -99,16 +104,39 @@ public class ScrolledPropertiesBlock
 		layout.marginHeight = 2;
 		client.setLayout(layout);
 		
-			Tree tr = null;
-			tr = toolkit.createTree(client, SWT.NULL);	
-			TreeViewer viewer = new TreeViewer(tr);
-			this.treeViewer=viewer;
-			
+//			Tree tr = null;
+//			tr = toolkit.createTree(client, SWT.NULL);	
+//			TreeViewer viewer = new TreeViewer(tr);
+		PatternFilter filter = new PatternFilter();
+		FilteredTree tree = new FilteredTree(client, SWT.MULTI | SWT.H_SCROLL
+				| SWT.V_SCROLL, filter, true);
+		this.treeViewer=tree.getViewer();
+		tree.getViewer().addDoubleClickListener(new IDoubleClickListener() {
+				@Override
+				public void doubleClick(DoubleClickEvent event) {
+					ISelection selection = tree.getViewer().getSelection();	
+					if (selection instanceof IStructuredSelection) {
+						IStructuredSelection ss = (IStructuredSelection) selection;
+						if (ss.getFirstElement() instanceof Color) {
+							Color color = (Color) ss.getFirstElement();
+							Shell shell = new Shell();
+							ColorDialog dlg = new ColorDialog(shell);
+					        dlg.setText("Choose a Color");
+					        RGB rgb = dlg.open();
+					        if (rgb != null) {
+					        	color.setR(rgb.red);
+					        	color.setG(rgb.green);
+					        	color.setB(rgb.blue);
+					        }
+						}							
+					}
+				}
+			});
 		
 			GridData gd = new GridData(GridData.FILL_BOTH);
 			gd.heightHint = 20;
 			gd.widthHint = 100;
-			tr.setLayoutData(gd);	
+			tree.setLayoutData(gd);	
 			
 			
 		toolkit.paintBordersFor(client);
@@ -143,7 +171,7 @@ public class ScrolledPropertiesBlock
 		ResourceSet resourceSet = ourEditor.getEditingDomain().getResourceSet();
 		Resource resource = (Resource) resourceSet.getResources().get(0);
 									
-			viewer.addSelectionChangedListener(new ISelectionChangedListener() {
+		tree.getViewer().addSelectionChangedListener(new ISelectionChangedListener() {
 				public void selectionChanged(SelectionChangedEvent event) {
 					
 					managedForm.fireSelectionChanged(spart, event.getSelection());	
@@ -159,29 +187,29 @@ public class ScrolledPropertiesBlock
 				}
 			});
 			
-			page.getSite().setSelectionProvider(viewer);
+			page.getSite().setSelectionProvider(tree.getViewer());
 
 			/* again - we need to get to the EMF constructs... 
 			 * 
 			 */
 			
 			
-			viewer.setContentProvider(new AdapterFactoryContentProvider(
+			tree.getViewer().setContentProvider(new AdapterFactoryContentProvider(
 					ourEditor.getAdapterFactory()));
 
-			viewer.setLabelProvider(new AdapterFactoryLabelProvider(
+			tree.getViewer().setLabelProvider(new AdapterFactoryLabelProvider(
 					ourEditor.getAdapterFactory()));
 			
 			//??
-			ADFTE = new AdapterFactoryTreeEditor(viewer.getTree(), ourEditor.getAdapterFactory());
+			ADFTE = new AdapterFactoryTreeEditor(tree.getViewer().getTree(), ourEditor.getAdapterFactory());
 			
 			//this is its own problem
-			ourEditor.createContextMenuFor(viewer);
+			ourEditor.createContextMenuFor(tree.getViewer());
 	
 			//viewer.setInput(resource.getContents().get(0));
-			viewer.setInput(resource);
+			tree.getViewer().setInput(resource);
 		
-			viewer.addSelectionChangedListener(this);
+			tree.getViewer().addSelectionChangedListener(this);
 			
 				
 		if (debug) {
