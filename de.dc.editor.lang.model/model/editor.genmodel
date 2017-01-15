@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<genmodel:GenModel xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore"
+    xmlns:genmodel="http://www.eclipse.org/emf/2002/GenModel" modelDirectory="/de.dc.editor.lang.model/src-gen" editDirectory="/de.dc.editor.lang.edit/src-gen"
+    editorDirectory="/de.dc.editor.lang.editor/src-gen" modelPluginID="de.dc.editor.lang.model"
+    runtimeJar="true" modelName="Editor" updateClasspath="false" rootExtendsClass="org.eclipse.emf.ecore.impl.MinimalEObjectImpl$Container"
+    testsDirectory="" booleanFlagsField="eFlags" booleanFlagsReservedBits="8" importerID="org.eclipse.emf.ecore.xcore.importer"
+    containmentProxies="true" complianceLevel="8.0" language="en" usedGenPackages="../../org.eclipse.emf.ecore/model/Ecore.genmodel#//ecore"
+    operationReflection="true" importOrganizing="true" decoration="Live" oSGiCompatible="true">
+  <genAnnotations source="http://www.eclipse.org/emf/2002/GenModel/exporter/org.eclipse.xsd.ecore.exporter">
+    <genAnnotations source="selectedPackages">
+      <details key="http://www.eclipse.org/emf/2002/Ecore" value="Ecore.xsd"/>
+    </genAnnotations>
+    <details key="directoryURI" value="."/>
+  </genAnnotations>
+  <genAnnotations source="http://www.eclipse.org/emf/2002/GenModel/exporter/org.eclipse.xsd.ecore.exporter.xmi">
+    <genAnnotations source="selectedPackages">
+      <details key="http://www.eclipse.org/emf/2002/Ecore" value="EcoreXMI.xsd"/>
+    </genAnnotations>
+    <details key="directoryURI" value="."/>
+  </genAnnotations>
+  <foreignModel>editor.xcore</foreignModel>
+  <modelPluginVariables>org.eclipse.xtext.xbase.lib</modelPluginVariables>
+  <modelPluginVariables>org.eclipse.emf.ecore.xcore.lib</modelPluginVariables>
+  <genPackages prefix="Model" basePackage="de.dc.editor.lang" disposableProviderFactory="true"
+      ecorePackage="model.ecore#/">
+    <genClasses ecoreClass="model.ecore#//NamedElement">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute model.ecore#//NamedElement/name"/>
+    </genClasses>
+    <genClasses ecoreClass="model.ecore#//LanguageDefinition">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute model.ecore#//LanguageDefinition/fileExtension"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference model.ecore#//LanguageDefinition/contentProposals"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference model.ecore#//LanguageDefinition/keywordGroups"/>
+    </genClasses>
+    <genClasses ecoreClass="model.ecore#//ContentProposal">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference model.ecore#//ContentProposal/contents"/>
+    </genClasses>
+    <genClasses image="false" ecoreClass="model.ecore#//Content">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute model.ecore#//Content/description"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute model.ecore#//Content/pattern"/>
+    </genClasses>
+    <genClasses ecoreClass="model.ecore#//Token"/>
+    <genClasses ecoreClass="model.ecore#//Function"/>
+    <genClasses ecoreClass="model.ecore#//Template"/>
+    <genClasses ecoreClass="model.ecore#//KeywordGroup">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference model.ecore#//KeywordGroup/color"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference model.ecore#//KeywordGroup/keyList"/>
+    </genClasses>
+    <genClasses ecoreClass="model.ecore#//Key">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute model.ecore#//Key/value"/>
+    </genClasses>
+    <genClasses ecoreClass="model.ecore#//Color">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute model.ecore#//Color/r"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute model.ecore#//Color/g"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute model.ecore#//Color/b"/>
+    </genClasses>
+  </genPackages>
+</genmodel:GenModel>

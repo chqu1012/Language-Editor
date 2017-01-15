@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<model:LanguageDefinition xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:model="de.dc.editor.lang.model" name="Java" fileExtension="lang">
+  <contentProposals name="Language">
+    <contents name="public" description="Offene Sichbarkeit der Variable"/>
+    <contents name="protected" description="Vererbte Variablen können weiter gegeben werden."/>
+    <contents name="private"/>
+    <contents name="abstract"/>
+    <contents name="void"/>
+    <contents name="main"/>
+    <contents name="break"/>
+    <contents name="return"/>
+  </contentProposals>
+  <keywordGroups name="Java Language">
+    <color name=" " r="160" g="89" b="170"/>
+    <keyList name="private" value="private"/>
+    <keyList name="public" value="public"/>
+    <keyList name="protected" value="protected"/>
+  </keywordGroups>
+  <keywordGroups name="Employees">
+    <color r="100" g="201" b="100"/>
+    <keyList name="Christian" value="Christian"/>
+    <keyList name="Martin" value="Martin"/>
+  </keywordGroups>
+  <keywordGroups name="Actors">
+    <color r="64" g="128" b="128"/>
+    <keyList name="Peter" value="Peter"/>
+    <keyList name="Jackson" value="Jackson"/>
+  </keywordGroups>
+  <keywordGroups name="Months">
+    <color name="Rot " g="255"/>
+    <keyList name="January" value="January"/>
+    <keyList name="February" value="February"/>
+    <keyList value="März"/>
+    <keyList value="April"/>
+  </keywordGroups>
+</model:LanguageDefinition>

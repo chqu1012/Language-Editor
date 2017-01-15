@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.4"?>
+<plugin>
+
+   <extension
+         point="org.eclipse.ui.editors">
+      <editor
+            class="de.dc.editor.lang.ui.editors.custom.LangEditor"
+            extensions="lang"
+            icon="icons/sample.gif"
+            id="de.dc.editor.lang.ui.editors.LangEditor"
+            name="Language Editor">
+      </editor>
+   </extension>
+                <extension
+                      point="org.eclipse.ui.preferencePages">
+                   <page
+                         class="de.dc.editor.lang.ui.preference.LanguageDefinitionPage"
+                         id="de.dc.editor.lang.ui.LanguageKonfiguration"
+                         name="Language Konfiguration">
+                   </page>
+                </extension>
+
+</plugin>

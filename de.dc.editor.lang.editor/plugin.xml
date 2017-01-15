@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.0"?>
+
+<!--
+-->
+
+<plugin>
+
+   <extension
+         point="org.eclipse.core.runtime.applications"
+         id="ModelEditorAdvisorApplication">
+      <!-- @generated editor -->
+      <application>
+         <run class="de.dc.editor.lang.model.presentation.ModelEditorAdvisor$Application"/>
+      </application>
+   </extension>
+
+   <extension point="org.eclipse.ui.perspectives">
+      <!-- @generated editor -->
+      <perspective
+            name="%_UI_Perspective_label"
+            class="de.dc.editor.lang.model.presentation.ModelEditorAdvisor$Perspective"
+            id="de.dc.editor.lang.model.presentation.ModelEditorAdvisorPerspective">
+      </perspective>
+   </extension>
+
+   <extension point="org.eclipse.ui.commands">
+      <!-- @generated editor -->
+      <command
+            name="%_UI_Menu_OpenURI_label"
+            description="%_UI_Menu_OpenURI_description"
+            categoryId="org.eclipse.ui.category.file"
+            id="de.dc.editor.lang.model.presentation.ModelEditorAdvisorOpenURICommand"/>
+      <command
+            name="%_UI_Menu_Open_label"
+            description="%_UI_Menu_Open_description"
+            categoryId="org.eclipse.ui.category.file"
+            id="de.dc.editor.lang.model.presentation.ModelEditorAdvisorOpenCommand"/>
+   </extension>
+
+   <extension point="org.eclipse.ui.bindings">
+      <!-- @generated editor -->
+      <key
+            commandId="de.dc.editor.lang.model.presentation.ModelEditorAdvisorOpenURICommand"
+            sequence="M1+U"
+            schemeId="org.eclipse.ui.defaultAcceleratorConfiguration"/>
+      <key
+            commandId="de.dc.editor.lang.model.presentation.ModelEditorAdvisorOpenCommand"
+            sequence="M1+O"
+            schemeId="org.eclipse.ui.defaultAcceleratorConfiguration"/>
+   </extension>
+
+   <extension point="org.eclipse.ui.actionSets">
+      <!-- @generated editor -->
+      <actionSet
+            label="%_UI_ModelEditorAdvisor_ActionSet_label"
+            visible="true"
+            id="ModelEditorAdvisorActionSet">
+         <action
+               label="%_UI_Menu_About_label"
+               class="de.dc.editor.lang.model.presentation.ModelEditorAdvisor$AboutAction"
+               menubarPath="help/additions"
+               id="de.dc.editor.lang.model.presentation.ModelEditorAdvisorAboutAction"/>
+         <action
+               label="%_UI_Menu_OpenURI_label"
+               definitionId="de.dc.editor.lang.model.presentation.ModelEditorAdvisorOpenURICommand"
+               class="de.dc.editor.lang.model.presentation.ModelEditorAdvisor$OpenURIAction"
+               menubarPath="file/additions"
+               id="de.dc.editor.lang.model.presentation.ModelEditorAdvisorOpenURIAction"/>
+         <action
+               label="%_UI_Menu_Open_label"
+               definitionId="de.dc.editor.lang.model.presentation.ModelEditorAdvisorOpenCommand"
+               class="de.dc.editor.lang.model.presentation.ModelEditorAdvisor$OpenAction"
+               menubarPath="file/additions"
+               id="de.dc.editor.lang.model.presentation.ModelEditorAdvisorOpenAction"/>
+      </actionSet>
+   </extension>
+
+   <extension point="org.eclipse.ui.actionSets">
+      <!-- @generated editor -->
+      <actionSet
+            label="%_UI_ModelModelWizard_ActionSet_label"
+            visible="true"
+            id="de.dc.editor.lang.model.presentation.ModelActionBarContributorActionSet">
+         <action
+               label="%_UI_ModelModelWizard_label"
+               class="de.dc.editor.lang.model.presentation.ModelActionBarContributor$NewAction"
+               menubarPath="file/new/additions"
+               id="de.dc.editor.lang.model.presentation.ModelActionBarContributorNewAction"/>
+      </actionSet>
+   </extension>
+
+   <extension point="org.eclipse.ui.editors">
+      <!-- @generated editor -->
+      <editor
+            id="de.dc.editor.lang.model.presentation.ModelEditorID"
+            name="%_UI_ModelEditor_label"
+            icon="icons/full/obj16/ModelModelFile.gif"
+            extensions="model"
+            class="de.dc.editor.lang.model.presentation.ModelEditor"
+            contributorClass="de.dc.editor.lang.model.presentation.ModelActionBarContributor">
+      </editor>
+   </extension>
+
+</plugin>

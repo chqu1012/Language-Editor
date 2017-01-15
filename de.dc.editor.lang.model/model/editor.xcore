@@ -1,0 +1,44 @@
+@GenModel(runtimePlatform="RCP",
+	modelDirectory="/de.dc.editor.lang.model/src-gen",
+	editDirectory="/de.dc.editor.lang.edit/src-gen", 
+	editorDirectory="/de.dc.editor.lang.editor/src-gen"
+) 
+package de.dc.editor.lang.model
+
+class NamedElement{
+	String name = ""
+} 
+
+class LanguageDefinition extends NamedElement{
+	String fileExtension = ""
+	contains ContentProposal[0..*] contentProposals
+	contains KeywordGroup[0..*] keywordGroups
+}
+
+class ContentProposal extends NamedElement{
+	contains Content[0..*] contents
+}
+
+abstract class Content extends NamedElement{
+	String description=""
+	String pattern = ""
+}
+
+class Token extends Content{}
+class Function extends Content{}
+class Template extends Content{}
+
+class KeywordGroup extends NamedElement{
+	contains Color[1] color
+	contains Key[0..*] keyList
+}
+
+class Key extends NamedElement{
+	String value = ""
+}
+
+class Color extends NamedElement{
+	int r='0'
+	int g='0'
+	int b='0'
+}
