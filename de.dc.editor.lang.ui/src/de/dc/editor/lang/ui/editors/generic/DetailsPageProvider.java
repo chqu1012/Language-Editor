@@ -4,12 +4,10 @@ import org.eclipse.ui.forms.IDetailsPage;
 import org.eclipse.ui.forms.IDetailsPageProvider;
  
 public class DetailsPageProvider implements IDetailsPageProvider {
-	boolean debug=false;
 	protected gfEditor ourEditor;
 
 	public DetailsPageProvider(gfEditor ourEditor) {
 		this.ourEditor=ourEditor;
-		
 	}
 
 	public Object getPageKey(Object object) {

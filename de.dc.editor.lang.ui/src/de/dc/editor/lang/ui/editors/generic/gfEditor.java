@@ -1,7 +1,3 @@
-/*
- * Created on Oct 19, 2004
- *
- */
 package de.dc.editor.lang.ui.editors.generic;
 
 import java.io.IOException;
@@ -30,6 +26,7 @@ import org.eclipse.emf.common.command.Command;
 import org.eclipse.emf.common.command.CommandStack;
 import org.eclipse.emf.common.command.CommandStackListener;
 import org.eclipse.emf.common.notify.AdapterFactory;
+import org.eclipse.emf.common.notify.impl.AdapterFactoryImpl;
 import org.eclipse.emf.common.ui.viewer.IViewerProvider;
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.EObject;
@@ -39,7 +36,6 @@ import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.edit.domain.AdapterFactoryEditingDomain;
 import org.eclipse.emf.edit.domain.EditingDomain;
 import org.eclipse.emf.edit.domain.IEditingDomainProvider;
-import org.eclipse.emf.edit.provider.AdapterFactoryItemDelegator;
 import org.eclipse.emf.edit.provider.ComposedAdapterFactory;
 import org.eclipse.emf.edit.provider.ReflectiveItemProviderAdapterFactory;
 import org.eclipse.emf.edit.provider.resource.ResourceItemProviderAdapterFactory;
@@ -49,7 +45,6 @@ import org.eclipse.emf.edit.ui.dnd.LocalTransfer;
 import org.eclipse.emf.edit.ui.dnd.ViewerDragAdapter;
 import org.eclipse.emf.edit.ui.provider.AdapterFactoryContentProvider;
 import org.eclipse.emf.edit.ui.provider.AdapterFactoryLabelProvider;
-
 import org.eclipse.jface.action.IMenuListener;
 import org.eclipse.jface.action.IMenuManager;
 import org.eclipse.jface.action.IStatusLineManager;
@@ -69,8 +64,6 @@ import org.eclipse.jface.viewers.StructuredViewer;
 import org.eclipse.jface.viewers.TreeViewer;
 import org.eclipse.jface.viewers.Viewer;
 import org.eclipse.swt.SWT;
-//import org.eclipse.swt.events.ControlEvent;
-//import org.eclipse.swt.events.ControlListener;
 import org.eclipse.swt.custom.CTabFolder;
 import org.eclipse.swt.dnd.DND;
 import org.eclipse.swt.dnd.Transfer;
@@ -92,7 +85,6 @@ import org.eclipse.ui.actions.WorkspaceModifyOperation;
 import org.eclipse.ui.dialogs.SaveAsDialog;
 import org.eclipse.ui.forms.FormColors;
 import org.eclipse.ui.forms.editor.FormEditor;
-
 import org.eclipse.ui.forms.events.HyperlinkAdapter;
 import org.eclipse.ui.forms.events.HyperlinkEvent;
 import org.eclipse.ui.forms.widgets.Form;
@@ -109,12 +101,6 @@ import org.eclipse.ui.views.properties.IPropertySheetPage;
 import org.eclipse.ui.views.properties.PropertySheet;
 import org.eclipse.ui.views.properties.PropertySheetPage;
 
-
-/**
- * @author swb
- *
-generic form editor
- */
 public class gfEditor extends FormEditor 
 	implements 
 		ISelectionProvider, 
@@ -132,7 +118,7 @@ public class gfEditor extends FormEditor
 	protected IStatusLineManager contentOutlineStatusLineManager;
 	protected TreeViewer contentOutlineViewer;
 	protected ISelectionChangedListener selectionChangedListener;
-	protected Collection selectionChangedListeners = new ArrayList();
+	protected Collection<ISelectionChangedListener> selectionChangedListeners = new ArrayList<ISelectionChangedListener>();
 	protected ScrolledPropertiesPage mdPage=null;
 	
 	
@@ -142,22 +128,11 @@ public class gfEditor extends FormEditor
 	public gfEditor() {
 		super();
 
-		List factories = new ArrayList();
+		List<AdapterFactory> factories = new ArrayList<AdapterFactory>();
 		factories.add(new ResourceItemProviderAdapterFactory());
-		
-		// ?? add specific xyzItemProviderFactory's here 
-		//factories.add(new LibraryItemProviderAdapterFactory());
-		
 		factories.add(new ReflectiveItemProviderAdapterFactory());
-
 		adapterFactory = new ComposedAdapterFactory(factories);
-
-		// Create the command stack that will notify this editor as commands are executed.
-		//
 		BasicCommandStack commandStack = new BasicCommandStack();
-
-		// Add a listener to set the most recent command's affected objects to be the selection of the viewer with focus.
-		//
 		commandStack.addCommandStackListener
 			(new CommandStackListener() {
 				 public void commandStackChanged(final EventObject event) {
@@ -166,8 +141,6 @@ public class gfEditor extends FormEditor
 							  public void run() {
 								  firePropertyChange(IEditorPart.PROP_DIRTY);
 								  if (debug) System.out.println("CommandStackListener: "+event.toString());
-								  // Try to select the affected objects.
-								  //
 								  Command mostRecentCommand = ((CommandStack)event.getSource()).getMostRecentCommand();
 								  if (mostRecentCommand != null) {
 									  setSelectionToViewer(mostRecentCommand.getAffectedObjects());
@@ -180,9 +153,6 @@ public class gfEditor extends FormEditor
 						  });
 				 }
 			 });
-
-		// Create the editing domain with a special command stack.
-		//
 		editingDomain = new AdapterFactoryEditingDomain(adapterFactory, commandStack, new HashMap());
 	}
 
@@ -219,11 +189,6 @@ public class gfEditor extends FormEditor
 		}
 	}
 
-
-	/*
-	 * dispose: not my job ?
-	 * 
-	 */
 	public void dispose() {
 		ResourcesPlugin.getWorkspace().removeResourceChangeListener(resourceChangeListener);
 		getSite().getPage().removePartListener(partListener);
@@ -239,8 +204,6 @@ public class gfEditor extends FormEditor
 		}
 		super.dispose();
 	}
-	/**/
-	
 
 	protected void firePropertyChange(int action) {
 		super.firePropertyChange(action);
@@ -250,8 +213,8 @@ public class gfEditor extends FormEditor
 		return adapterFactory;
 	}
 	
-	public void setSelectionToViewer(Collection collection) {
-		final Collection theSelection = collection;
+	public void setSelectionToViewer(Collection<?> collection) {
+		final Collection<?> theSelection = collection;
 		// Make sure it's okay.
 		//
 		if (theSelection != null && !theSelection.isEmpty()) {
@@ -273,8 +236,6 @@ public class gfEditor extends FormEditor
 			runnable.run();
 		}
 	}
-
-/////////
 
 	Form homePage() { return tempPage("Home"); }
 		
