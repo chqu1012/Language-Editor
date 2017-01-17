@@ -34,23 +34,27 @@ class DoubleClickSwitch extends ModelSwitch<Object> {
 	}
 	
 	override caseLanguageDefinition(LanguageDefinition object) {
+		val editorReg = PlatformUI.getWorkbench().getEditorRegistry() as EditorRegistry
 		val message = 'Do you want to registrate the file extension '+object.fileExtension+'?'
-		val registrate=MessageDialog.openQuestion(new Shell, "File Association", message)
-		if(registrate){
-			val editorReg = PlatformUI.getWorkbench().getEditorRegistry() as EditorRegistry
-		    val editor =  editorReg.findEditor("de.dc.editor.lang.ui.editors.LangEditor") as EditorDescriptor
-		    val mapping = new FileEditorMapping(object.fileExtension)
-		    mapping.addEditor(editor)
-		    mapping.setDefaultEditor(editor)
+		val mappings = editorReg.getFileEditorMappings()
 		
-		    val mappings = editorReg.getFileEditorMappings()
-		    val extExist = mappings.filter[it.extension==object.fileExtension].size>0
-			val List<IFileEditorMapping> newMappings = new ArrayList		    
-			if(!extExist){
-				newMappings+=mappings
-				newMappings+=mapping
-		    }
-		    editorReg.setFileEditorMappings(newMappings.toArray(#[]))
+		val hasExtension = mappings.filter[it.extension==object.fileExtension].size>0
+		if(!hasExtension){
+			val registrate=MessageDialog.openQuestion(new Shell, "File Association", message)
+			if(registrate){
+		   		val editor =  editorReg.findEditor("de.dc.editor.lang.ui.editors.LangEditor") as EditorDescriptor
+			    val mapping = new FileEditorMapping(object.fileExtension)
+			    mapping.addEditor(editor)
+			    mapping.setDefaultEditor(editor)
+			
+			    val extExist = mappings.filter[it.extension==object.fileExtension].size>0
+				val List<IFileEditorMapping> newMappings = new ArrayList		    
+				if(!extExist){
+					newMappings+=mappings
+					newMappings+=mapping
+			    }
+			    editorReg.setFileEditorMappings(newMappings.toArray(#[]))
+			}
 		}
 		object
 	}
