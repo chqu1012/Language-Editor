@@ -109,7 +109,7 @@ public class ContentProposalItemProvider extends NamedElementItemProvider {
 	 * This returns ContentProposal.gif.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 * @generated not
 	 */
 	@Override
 	public Object getImage(Object object) {
