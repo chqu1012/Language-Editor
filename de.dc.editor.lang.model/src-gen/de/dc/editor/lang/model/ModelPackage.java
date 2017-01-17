@@ -4,6 +4,7 @@ package de.dc.editor.lang.model;
 
 import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.EEnum;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.EReference;
 
@@ -187,13 +188,22 @@ public interface ModelPackage extends EPackage {
 	int CONTENT_PROPOSAL__CONTENTS = NAMED_ELEMENT_FEATURE_COUNT + 0;
 
 	/**
+	 * The feature id for the '<em><b>Image</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CONTENT_PROPOSAL__IMAGE = NAMED_ELEMENT_FEATURE_COUNT + 1;
+
+	/**
 	 * The number of structural features of the '<em>Content Proposal</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int CONTENT_PROPOSAL_FEATURE_COUNT = NAMED_ELEMENT_FEATURE_COUNT + 1;
+	int CONTENT_PROPOSAL_FEATURE_COUNT = NAMED_ELEMENT_FEATURE_COUNT + 2;
 
 	/**
 	 * The number of operations of the '<em>Content Proposal</em>' class.
@@ -589,6 +599,16 @@ public interface ModelPackage extends EPackage {
 	 */
 	int COLOR_OPERATION_COUNT = NAMED_ELEMENT_OPERATION_COUNT + 0;
 
+	/**
+	 * The meta object id for the '{@link de.dc.editor.lang.model.Image <em>Image</em>}' enum.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see de.dc.editor.lang.model.Image
+	 * @see de.dc.editor.lang.model.impl.ModelPackageImpl#getImage()
+	 * @generated
+	 */
+	int IMAGE = 10;
+
 
 	/**
 	 * Returns the meta object for class '{@link de.dc.editor.lang.model.NamedElement <em>Named Element</em>}'.
@@ -674,6 +694,17 @@ public interface ModelPackage extends EPackage {
 	 * @generated
 	 */
 	EReference getContentProposal_Contents();
+
+	/**
+	 * Returns the meta object for the attribute '{@link de.dc.editor.lang.model.ContentProposal#getImage <em>Image</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Image</em>'.
+	 * @see de.dc.editor.lang.model.ContentProposal#getImage()
+	 * @see #getContentProposal()
+	 * @generated
+	 */
+	EAttribute getContentProposal_Image();
 
 	/**
 	 * Returns the meta object for class '{@link de.dc.editor.lang.model.Content <em>Content</em>}'.
@@ -834,6 +865,16 @@ public interface ModelPackage extends EPackage {
 	EAttribute getColor_B();
 
 	/**
+	 * Returns the meta object for enum '{@link de.dc.editor.lang.model.Image <em>Image</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for enum '<em>Image</em>'.
+	 * @see de.dc.editor.lang.model.Image
+	 * @generated
+	 */
+	EEnum getImage();
+
+	/**
 	 * Returns the factory that creates the instances of the model.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -925,6 +966,14 @@ public interface ModelPackage extends EPackage {
 		 * @generated
 		 */
 		EReference CONTENT_PROPOSAL__CONTENTS = eINSTANCE.getContentProposal_Contents();
+
+		/**
+		 * The meta object literal for the '<em><b>Image</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute CONTENT_PROPOSAL__IMAGE = eINSTANCE.getContentProposal_Image();
 
 		/**
 		 * The meta object literal for the '{@link de.dc.editor.lang.model.impl.ContentImpl <em>Content</em>}' class.
@@ -1059,6 +1108,16 @@ public interface ModelPackage extends EPackage {
 		 * @generated
 		 */
 		EAttribute COLOR__B = eINSTANCE.getColor_B();
+
+		/**
+		 * The meta object literal for the '{@link de.dc.editor.lang.model.Image <em>Image</em>}' enum.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see de.dc.editor.lang.model.Image
+		 * @see de.dc.editor.lang.model.impl.ModelPackageImpl#getImage()
+		 * @generated
+		 */
+		EEnum IMAGE = eINSTANCE.getImage();
 
 	}
 

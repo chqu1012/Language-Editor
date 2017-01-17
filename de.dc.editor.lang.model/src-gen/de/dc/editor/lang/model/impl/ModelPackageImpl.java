@@ -6,6 +6,7 @@ import de.dc.editor.lang.model.Color;
 import de.dc.editor.lang.model.Content;
 import de.dc.editor.lang.model.ContentProposal;
 import de.dc.editor.lang.model.Function;
+import de.dc.editor.lang.model.Image;
 import de.dc.editor.lang.model.Key;
 import de.dc.editor.lang.model.KeywordGroup;
 import de.dc.editor.lang.model.LanguageDefinition;
@@ -17,6 +18,7 @@ import de.dc.editor.lang.model.Token;
 
 import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.EEnum;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.EReference;
 import org.eclipse.emf.ecore.EcorePackage;
@@ -99,6 +101,13 @@ public class ModelPackageImpl extends EPackageImpl implements ModelPackage {
 	 * @generated
 	 */
 	private EClass colorEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EEnum imageEEnum = null;
 
 	/**
 	 * Creates an instance of the model <b>Package</b>, registered with
@@ -241,6 +250,15 @@ public class ModelPackageImpl extends EPackageImpl implements ModelPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EAttribute getContentProposal_Image() {
+		return (EAttribute)contentProposalEClass.getEStructuralFeatures().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EClass getContent() {
 		return contentEClass;
 	}
@@ -376,6 +394,15 @@ public class ModelPackageImpl extends EPackageImpl implements ModelPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EEnum getImage() {
+		return imageEEnum;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public ModelFactory getModelFactory() {
 		return (ModelFactory)getEFactoryInstance();
 	}
@@ -409,6 +436,7 @@ public class ModelPackageImpl extends EPackageImpl implements ModelPackage {
 
 		contentProposalEClass = createEClass(CONTENT_PROPOSAL);
 		createEReference(contentProposalEClass, CONTENT_PROPOSAL__CONTENTS);
+		createEAttribute(contentProposalEClass, CONTENT_PROPOSAL__IMAGE);
 
 		contentEClass = createEClass(CONTENT);
 		createEAttribute(contentEClass, CONTENT__DESCRIPTION);
@@ -431,6 +459,9 @@ public class ModelPackageImpl extends EPackageImpl implements ModelPackage {
 		createEAttribute(colorEClass, COLOR__R);
 		createEAttribute(colorEClass, COLOR__G);
 		createEAttribute(colorEClass, COLOR__B);
+
+		// Create enums
+		imageEEnum = createEEnum(IMAGE);
 	}
 
 	/**
@@ -485,6 +516,7 @@ public class ModelPackageImpl extends EPackageImpl implements ModelPackage {
 
 		initEClass(contentProposalEClass, ContentProposal.class, "ContentProposal", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getContentProposal_Contents(), this.getContent(), null, "contents", null, 0, -1, ContentProposal.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getContentProposal_Image(), this.getImage(), "image", null, 0, 1, ContentProposal.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(contentEClass, Content.class, "Content", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getContent_Description(), theEcorePackage.getEString(), "description", "", 0, 1, Content.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -507,6 +539,97 @@ public class ModelPackageImpl extends EPackageImpl implements ModelPackage {
 		initEAttribute(getColor_R(), theEcorePackage.getEInt(), "r", "0", 0, 1, Color.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getColor_G(), theEcorePackage.getEInt(), "g", "0", 0, 1, Color.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getColor_B(), theEcorePackage.getEInt(), "b", "0", 0, 1, Color.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		// Initialize enums and add enum literals
+		initEEnum(imageEEnum, Image.class, "Image");
+		addEEnumLiteral(imageEEnum, Image.NONE);
+		addEEnumLiteral(imageEEnum, Image.IMG_DEC_FIELD_ERROR);
+		addEEnumLiteral(imageEEnum, Image.IMG_DEC_FIELD_WARNING);
+		addEEnumLiteral(imageEEnum, Image.IMG_DEF_VIEW);
+		addEEnumLiteral(imageEEnum, Image.IMG_ELCL_COLLAPSEALL);
+		addEEnumLiteral(imageEEnum, Image.IMG_ELCL_COLLAPSEALL_DISABLED);
+		addEEnumLiteral(imageEEnum, Image.IMG_ELCL_REMOVE);
+		addEEnumLiteral(imageEEnum, Image.IMG_ELCL_REMOVE_DISABLED);
+		addEEnumLiteral(imageEEnum, Image.IMG_ELCL_REMOVEALL);
+		addEEnumLiteral(imageEEnum, Image.IMG_ELCL_REMOVEALL_DISABLED);
+		addEEnumLiteral(imageEEnum, Image.IMG_ELCL_STOP);
+		addEEnumLiteral(imageEEnum, Image.IMG_ELCL_STOP_DISABLED);
+		addEEnumLiteral(imageEEnum, Image.IMG_ELCL_SYNCED);
+		addEEnumLiteral(imageEEnum, Image.IMG_ELCL_SYNCED_DISABLED);
+		addEEnumLiteral(imageEEnum, Image.IMG_ETOOL_CLEAR);
+		addEEnumLiteral(imageEEnum, Image.IMG_ETOOL_CLEAR_DISABLED);
+		addEEnumLiteral(imageEEnum, Image.IMG_ETOOL_DEF_PERSPECTIVE);
+		addEEnumLiteral(imageEEnum, Image.IMG_ETOOL_DELETE);
+		addEEnumLiteral(imageEEnum, Image.IMG_ETOOL_DELETE_DISABLED);
+		addEEnumLiteral(imageEEnum, Image.IMG_ETOOL_HOME_NAV);
+		addEEnumLiteral(imageEEnum, Image.IMG_ETOOL_HOME_NAV_DISABLED);
+		addEEnumLiteral(imageEEnum, Image.IMG_ETOOL_PRINT_EDIT);
+		addEEnumLiteral(imageEEnum, Image.IMG_ETOOL_PRINT_EDIT_DISABLED);
+		addEEnumLiteral(imageEEnum, Image.IMG_ETOOL_SAVE_EDIT);
+		addEEnumLiteral(imageEEnum, Image.IMG_ETOOL_SAVE_EDIT_DISABLED);
+		addEEnumLiteral(imageEEnum, Image.IMG_ETOOL_SAVEALL_EDIT);
+		addEEnumLiteral(imageEEnum, Image.IMG_ETOOL_SAVEALL_EDIT_DISABLED);
+		addEEnumLiteral(imageEEnum, Image.IMG_ETOOL_SAVEAS_EDIT);
+		addEEnumLiteral(imageEEnum, Image.IMG_ETOOL_SAVEAS_EDIT_DISABLED);
+		addEEnumLiteral(imageEEnum, Image.IMG_LCL_LINKTO_HELP);
+		addEEnumLiteral(imageEEnum, Image.IMG_OBJ_ADD);
+		addEEnumLiteral(imageEEnum, Image.IMG_OBJ_ELEMENT);
+		addEEnumLiteral(imageEEnum, Image.IMG_OBJ_FILE);
+		addEEnumLiteral(imageEEnum, Image.IMG_OBJ_FOLDER);
+		addEEnumLiteral(imageEEnum, Image.IMG_OBJ_PROJECT);
+		addEEnumLiteral(imageEEnum, Image.IMG_OBJ_PROJECT_CLOSED);
+		addEEnumLiteral(imageEEnum, Image.IMG_OBJS_BKMRK_TSK);
+		addEEnumLiteral(imageEEnum, Image.IMG_OBJS_DND_BOTTOM_MASK);
+		addEEnumLiteral(imageEEnum, Image.IMG_OBJS_DND_BOTTOM_SOURCE);
+		addEEnumLiteral(imageEEnum, Image.IMG_OBJS_DND_INVALID_MASK);
+		addEEnumLiteral(imageEEnum, Image.IMG_OBJS_DND_INVALID_SOURCE);
+		addEEnumLiteral(imageEEnum, Image.IMG_OBJS_DND_LEFT_MASK);
+		addEEnumLiteral(imageEEnum, Image.IMG_OBJS_DND_LEFT_SOURCE);
+		addEEnumLiteral(imageEEnum, Image.IMG_OBJS_DND_OFFSCREEN_MASK);
+		addEEnumLiteral(imageEEnum, Image.IMG_OBJS_DND_OFFSCREEN_SOURCE);
+		addEEnumLiteral(imageEEnum, Image.IMG_OBJS_DND_RIGHT_MASK);
+		addEEnumLiteral(imageEEnum, Image.IMG_OBJS_DND_RIGHT_SOURCE);
+		addEEnumLiteral(imageEEnum, Image.IMG_OBJS_DND_STACK_MASK);
+		addEEnumLiteral(imageEEnum, Image.IMG_OBJS_DND_STACK_SOURCE);
+		addEEnumLiteral(imageEEnum, Image.IMG_OBJS_DND_TOFASTVIEW_MASK);
+		addEEnumLiteral(imageEEnum, Image.IMG_OBJS_DND_TOFASTVIEW_SOURCE);
+		addEEnumLiteral(imageEEnum, Image.IMG_OBJS_DND_TOP_MASK);
+		addEEnumLiteral(imageEEnum, Image.IMG_OBJS_DND_TOP_SOURCE);
+		addEEnumLiteral(imageEEnum, Image.IMG_OBJS_ERROR_TSK);
+		addEEnumLiteral(imageEEnum, Image.IMG_OBJS_INFO_TSK);
+		addEEnumLiteral(imageEEnum, Image.IMG_OBJS_TASK_TSK);
+		addEEnumLiteral(imageEEnum, Image.IMG_OBJS_WARN_TSK);
+		addEEnumLiteral(imageEEnum, Image.IMG_OPEN_MARKER);
+		addEEnumLiteral(imageEEnum, Image.IMG_TOOL_BACK);
+		addEEnumLiteral(imageEEnum, Image.IMG_TOOL_BACK_DISABLED);
+		addEEnumLiteral(imageEEnum, Image.IMG_TOOL_BACK_HOVER);
+		addEEnumLiteral(imageEEnum, Image.IMG_TOOL_COPY);
+		addEEnumLiteral(imageEEnum, Image.IMG_TOOL_COPY_DISABLED);
+		addEEnumLiteral(imageEEnum, Image.IMG_TOOL_COPY_HOVER);
+		addEEnumLiteral(imageEEnum, Image.IMG_TOOL_CUT);
+		addEEnumLiteral(imageEEnum, Image.IMG_TOOL_CUT_DISABLED);
+		addEEnumLiteral(imageEEnum, Image.IMG_TOOL_CUT_HOVER);
+		addEEnumLiteral(imageEEnum, Image.IMG_TOOL_DELETE);
+		addEEnumLiteral(imageEEnum, Image.IMG_TOOL_DELETE_DISABLED);
+		addEEnumLiteral(imageEEnum, Image.IMG_TOOL_DELETE_HOVER);
+		addEEnumLiteral(imageEEnum, Image.IMG_TOOL_FORWARD);
+		addEEnumLiteral(imageEEnum, Image.IMG_TOOL_FORWARD_DISABLED);
+		addEEnumLiteral(imageEEnum, Image.IMG_TOOL_FORWARD_HOVER);
+		addEEnumLiteral(imageEEnum, Image.IMG_TOOL_NEW_WIZARD);
+		addEEnumLiteral(imageEEnum, Image.IMG_TOOL_NEW_WIZARD_DISABLED);
+		addEEnumLiteral(imageEEnum, Image.IMG_TOOL_NEW_WIZARD_HOVER);
+		addEEnumLiteral(imageEEnum, Image.IMG_TOOL_PASTE);
+		addEEnumLiteral(imageEEnum, Image.IMG_TOOL_PASTE_DISABLED);
+		addEEnumLiteral(imageEEnum, Image.IMG_TOOL_PASTE_HOVER);
+		addEEnumLiteral(imageEEnum, Image.IMG_TOOL_REDO);
+		addEEnumLiteral(imageEEnum, Image.IMG_TOOL_REDO_DISABLED);
+		addEEnumLiteral(imageEEnum, Image.IMG_TOOL_REDO_HOVER);
+		addEEnumLiteral(imageEEnum, Image.IMG_TOOL_UNDO);
+		addEEnumLiteral(imageEEnum, Image.IMG_TOOL_UNDO_DISABLED);
+		addEEnumLiteral(imageEEnum, Image.IMG_TOOL_UNDO_HOVER);
+		addEEnumLiteral(imageEEnum, Image.IMG_TOOL_UP);
+		addEEnumLiteral(imageEEnum, Image.IMG_TOOL_UP_DISABLED);
+		addEEnumLiteral(imageEEnum, Image.IMG_TOOL_UP_HOVER);
 
 		// Create resource
 		createResource(eNS_URI);

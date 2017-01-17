@@ -10,6 +10,7 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 
+import org.eclipse.emf.common.util.ECollections;
 import org.eclipse.jface.text.IDocument;
 import org.eclipse.jface.text.ITextViewer;
 import org.eclipse.jface.text.Region;
@@ -75,31 +76,27 @@ public class LanguageCompletionProcessor implements IContentAssistProcessor {
 
 	private void getAddTaskTemplateProposals(TemplateContext templateContext, Region region,
 			List<ICompletionProposal> p) throws FileNotFoundException, IOException {
-		List<Content> keywords = new ArrayList<Content>();
 		LangFile file = new LangFile();
 		LanguageDefinition model = file.load(ILanguageConstants.MODEL_PATH);
 		for (ContentProposal prop : model.getContentProposals()) {
+			Collections.sort(prop.getContents(), new Comparator<Content>() {
+				@Override
+				public int compare(Content o1, Content o2) {
+					return o1.getName().compareTo(o2.getName());
+				}
+			});
 			for (Content content : prop.getContents()) {
 				if (content instanceof de.dc.editor.lang.model.Template) {
-					keywords.add(content);
+						String name = content.getName();
+						String descr = content.getDescription();
+						String pattern = content.getPattern();
+						
+						p.add(new TemplateProposal(new Template(name, descr, CONTEXT_ID, pattern, false), templateContext, region,
+								null));
 				}
 			}
 		}
-		Collections.sort(keywords, new Comparator<Content>() {
-			@Override
-			public int compare(Content o1, Content o2) {
-				return o1.getName().compareTo(o2.getName());
-			}
-		});
 
-		for (Content key : keywords) {
-			String name = key.getName();
-			String descr = key.getDescription();
-			String pattern = key.getPattern();
-
-			p.add(new TemplateProposal(new Template(name, descr, CONTEXT_ID, pattern, false), templateContext, region,
-					null));
-		}
 
 	}
 
@@ -121,61 +118,51 @@ public class LanguageCompletionProcessor implements IContentAssistProcessor {
 
 	private void getFunctionTemplateProposals(TemplateContext templateContext, Region region,
 			List<ICompletionProposal> p) throws FileNotFoundException, IOException {
-		Image img = PlatformUI.getWorkbench().getSharedImages().getImage(ISharedImages.IMG_OBJS_INFO_TSK);
-		List<Content> keywords = new ArrayList<Content>();
 		LangFile file = new LangFile();
 		LanguageDefinition model = file.load(ILanguageConstants.MODEL_PATH);
 		for (ContentProposal prop : model.getContentProposals()) {
+			ECollections.sort(prop.getContents(), new Comparator<Content>() {
+				@Override
+				public int compare(Content o1, Content o2) {
+					return o1.getName().compareTo(o2.getName());
+				}
+			});
+			Image img = PlatformUI.getWorkbench().getSharedImages().getImage(prop.getImage().getName());
 			for (Content content : prop.getContents()) {
 				if (content instanceof Function) {
-					keywords.add(content);
+					String name = content.getName();
+					String descr = content.getDescription();
+					String pattern = content.getPattern();
+					p.add(new TemplateProposal(new Template(name, descr, CONTEXT_ID,
+							pattern, false), templateContext, region, img));
 				}
 			}
-		}
-		Collections.sort(keywords, new Comparator<Content>() {
-			@Override
-			public int compare(Content o1, Content o2) {
-				return o1.getName().compareTo(o2.getName());
-			}
-		});
-
-		for (Content key : keywords) {
-			String name = key.getName();
-			String descr = key.getDescription();
-			String pattern = key.getPattern();
-			p.add(new TemplateProposal(new Template(name, descr, CONTEXT_ID,
-					pattern, false), templateContext, region, img));
 		}
 
 	}
 
 	private void getKeywordTemplateProposals(TemplateContext templateContext, Region region, List<ICompletionProposal> proposals) throws FileNotFoundException, IOException {
-		Image img = PlatformUI.getWorkbench().getSharedImages().getImage(ISharedImages.IMG_OBJS_INFO_TSK);
-		List<Content> keywords = new ArrayList<Content>();
 		LangFile file = new LangFile();
 		LanguageDefinition model = file.load(ILanguageConstants.MODEL_PATH);
 		for (ContentProposal prop : model.getContentProposals()) {
+			ECollections.sort(prop.getContents(), new Comparator<Content>() {
+				@Override
+				public int compare(Content o1, Content o2) {
+					return o1.getName().compareTo(o2.getName());
+				}
+			});
+			Image img = PlatformUI.getWorkbench().getSharedImages().getImage(prop.getImage().getName());
 			for (Content content : prop.getContents()) {
 				if (content instanceof Token) {
-					keywords.add(content);
+					String name = content.getName();
+					String descr = content.getDescription();
+					String pattern = content.getPattern();
+					
+					proposals.add(new TemplateProposal(
+							new Template(name, descr, CONTEXT_ID, pattern, false),
+							templateContext, region, img));
 				}
 			}
-		}
-		Collections.sort(keywords, new Comparator<Content>() {
-			@Override
-			public int compare(Content o1, Content o2) {
-				return o1.getName().compareTo(o2.getName());
-			}
-		});
-
-		for (Content key : keywords) {
-			String name = key.getName();
-			String descr = key.getDescription();
-			String pattern = key.getPattern();
-			
-			proposals.add(new TemplateProposal(
-					new Template(name, descr, CONTEXT_ID, pattern, false),
-					templateContext, region, img));
 		}
 	}
 

@@ -6,7 +6,7 @@
 package de.dc.editor.lang.model
 
 class NamedElement{
-	String name = ""
+	String name = "" 
 } 
 
 class LanguageDefinition extends NamedElement{
