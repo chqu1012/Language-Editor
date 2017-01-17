@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<model:LanguageDefinition xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:model="de.dc.editor.lang.model" name="Gridpoint" fileExtension="gpt">
+  <contentProposals name="Maths" image="IMG_ELCL_REMOVE_DISABLED">
+    <contents xsi:type="model:Token" name="abs" pattern="abs"/>
+    <contents xsi:type="model:Token" name="sqrt" pattern="sqrt"/>
+  </contentProposals>
+  <keywordGroups name="Maths">
+    <color r="128" g="255"/>
+    <keyList name="abs" value="abs"/>
+    <keyList name="function" value="function"/>
+    <keyList name="sqrt" value="sqrt"/>
+  </keywordGroups>
+</model:LanguageDefinition>
