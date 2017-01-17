@@ -12,5 +12,6 @@ Export-Package: de.dc.editor.lang.model.provider
 Require-Bundle: org.eclipse.core.runtime,
  de.dc.editor.lang.model;visibility:=reexport,
  org.eclipse.emf.edit;visibility:=reexport,
- org.eclipse.emf.ecore;visibility:=reexport
+ org.eclipse.emf.ecore;visibility:=reexport,
+ org.eclipse.ui;bundle-version="3.108.0"
 Bundle-ActivationPolicy: lazy

@@ -4,6 +4,7 @@ package de.dc.editor.lang.model.provider;
 
 
 import de.dc.editor.lang.model.ContentProposal;
+import de.dc.editor.lang.model.Image;
 import de.dc.editor.lang.model.ModelFactory;
 import de.dc.editor.lang.model.ModelPackage;
 import java.util.Collection;
@@ -13,8 +14,11 @@ import org.eclipse.emf.common.notify.AdapterFactory;
 import org.eclipse.emf.common.notify.Notification;
 
 import org.eclipse.emf.ecore.EStructuralFeature;
+import org.eclipse.emf.edit.provider.ComposeableAdapterFactory;
 import org.eclipse.emf.edit.provider.IItemPropertyDescriptor;
+import org.eclipse.emf.edit.provider.ItemPropertyDescriptor;
 import org.eclipse.emf.edit.provider.ViewerNotification;
+import org.eclipse.ui.PlatformUI;
 
 /**
  * This is the item provider adapter for a {@link de.dc.editor.lang.model.ContentProposal} object.
@@ -44,8 +48,31 @@ public class ContentProposalItemProvider extends NamedElementItemProvider {
 		if (itemPropertyDescriptors == null) {
 			super.getPropertyDescriptors(object);
 
+			addImagePropertyDescriptor(object);
 		}
 		return itemPropertyDescriptors;
+	}
+
+	/**
+	 * This adds a property descriptor for the Image feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addImagePropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_ContentProposal_image_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_ContentProposal_image_feature", "_UI_ContentProposal_type"),
+				 ModelPackage.Literals.CONTENT_PROPOSAL__IMAGE,
+				 true,
+				 false,
+				 false,
+				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+				 null,
+				 null));
 	}
 
 	/**
@@ -86,7 +113,13 @@ public class ContentProposalItemProvider extends NamedElementItemProvider {
 	 */
 	@Override
 	public Object getImage(Object object) {
-		return overlayImage(object, getResourceLocator().getImage("full/obj16/ContentProposal"));
+//		return overlayImage(object, getResourceLocator().getImage("full/obj16/ContentProposal"));
+		ContentProposal cp =(ContentProposal)object;
+		Image image = cp.getImage();
+		if(image==Image.NONE){
+			return null;
+		}
+		return PlatformUI.getWorkbench().getSharedImages().getImage(image.getName());
 	}
 
 	/**
@@ -116,6 +149,9 @@ public class ContentProposalItemProvider extends NamedElementItemProvider {
 		updateChildren(notification);
 
 		switch (notification.getFeatureID(ContentProposal.class)) {
+			case ModelPackage.CONTENT_PROPOSAL__IMAGE:
+				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
+				return;
 			case ModelPackage.CONTENT_PROPOSAL__CONTENTS:
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), true, false));
 				return;
