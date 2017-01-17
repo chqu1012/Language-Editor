@@ -22,7 +22,7 @@ Content proposals
 ![Content Proposals](https://github.com/chqu1012/Language-Editor/blob/master/de.dc.editor.lang.wiki/content-proposals.png "Content Proposalsg")
 
 ##Download
-*![v0.1.0](https://github.com/chqu1012/Language-Editor/blob/master/de.dc.editor.lang.wiki/binaries/de.dc.editor.lang.model.editor-0.1.0.zip)
+* ![v0.1.0](https://github.com/chqu1012/Language-Editor/blob/master/de.dc.editor.lang.wiki/binaries/de.dc.editor.lang.model.editor-0.1.0.zip)
 
 ##Changelog
 
