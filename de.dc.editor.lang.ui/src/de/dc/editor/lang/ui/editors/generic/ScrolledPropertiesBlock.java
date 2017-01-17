@@ -1,5 +1,8 @@
 package de.dc.editor.lang.ui.editors.generic;
 
+import java.io.IOException;
+
+import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.edit.ui.celleditor.AdapterFactoryTreeEditor;
@@ -36,6 +39,10 @@ import org.eclipse.ui.forms.widgets.ScrolledForm;
 import org.eclipse.ui.forms.widgets.Section;
 
 import de.dc.editor.lang.model.Color;
+import de.dc.editor.lang.model.LanguageDefinition;
+import de.dc.editor.lang.ui.file.LangFile;
+import de.dc.editor.lang.ui.preference.LanguageDefinitionPage;
+import de.dc.editor.lang.ui.visitor.DoubleClickSwitch;
 
 public class ScrolledPropertiesBlock extends MasterDetailsBlock implements ISelectionChangedListener {
 
@@ -45,6 +52,7 @@ public class ScrolledPropertiesBlock extends MasterDetailsBlock implements ISele
 	private IDetailsPageProvider myDetailsPageProvider;
 
 	public AdapterFactoryTreeEditor ADFTE;
+	private Resource resource;
 
 	public ScrolledPropertiesBlock(FormPage page, gfEditor theEditor) {
 		this.page = page;
@@ -68,6 +76,8 @@ public class ScrolledPropertiesBlock extends MasterDetailsBlock implements ISele
 		layout.marginHeight = 2;
 		client.setLayout(layout);
 
+		DoubleClickSwitch doubleClickSwitch = new DoubleClickSwitch();
+		
 		PatternFilter filter = new PatternFilter();
 		FilteredTree tree = new FilteredTree(client, SWT.MULTI | SWT.H_SCROLL | SWT.V_SCROLL, filter, true);
 		tree.getViewer().addDoubleClickListener(new IDoubleClickListener() {
@@ -75,18 +85,12 @@ public class ScrolledPropertiesBlock extends MasterDetailsBlock implements ISele
 			public void doubleClick(DoubleClickEvent event) {
 				ISelection selection = tree.getViewer().getSelection();
 				if (selection instanceof IStructuredSelection) {
-					IStructuredSelection ss = (IStructuredSelection) selection;
-					if (ss.getFirstElement() instanceof Color) {
-						Color color = (Color) ss.getFirstElement();
-						Shell shell = new Shell();
-						ColorDialog dlg = new ColorDialog(shell);
-						dlg.setText("Choose a Color");
-						RGB rgb = dlg.open();
-						if (rgb != null) {
-							color.setR(rgb.red);
-							color.setG(rgb.green);
-							color.setB(rgb.blue);
-						}
+					IStructuredSelection ss=(IStructuredSelection)selection;
+					doubleClickSwitch.doSwitch((EObject) ss.getFirstElement());
+					try {
+						resource.save(null);
+					} catch (IOException e) {
+						e.printStackTrace();
 					}
 				}
 			}
@@ -116,8 +120,8 @@ public class ScrolledPropertiesBlock extends MasterDetailsBlock implements ISele
 		managedForm.addPart(spart);
 
 		ResourceSet resourceSet = ourEditor.getEditingDomain().getResourceSet();
-		Resource resource = (Resource) resourceSet.getResources().get(0);
-
+		resource = (Resource) resourceSet.getResources().get(0);
+		
 		tree.getViewer().addSelectionChangedListener(new ISelectionChangedListener() {
 			public void selectionChanged(SelectionChangedEvent event) {
 				managedForm.fireSelectionChanged(spart, event.getSelection());

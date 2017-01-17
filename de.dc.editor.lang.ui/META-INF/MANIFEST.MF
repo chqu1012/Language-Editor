@@ -24,4 +24,11 @@ Bundle-RequiredExecutionEnvironment: JavaSE-1.8
 Bundle-ClassPath: .,
  lib/org.eclipse.cdt.core.source_6.2.0.201612061315.jar,
  lib/org.eclipse.cdt.core_6.2.0.201612061315.jar
+Export-Package: de.dc.editor.lang.ui.editors,
+ de.dc.editor.lang.ui.editors.custom,
+ de.dc.editor.lang.ui.editors.generic,
+ de.dc.editor.lang.ui.file,
+ de.dc.editor.lang.ui.file.format,
+ de.dc.editor.lang.ui.preference,
+ de.dc.editor.lang.ui.visitor
 

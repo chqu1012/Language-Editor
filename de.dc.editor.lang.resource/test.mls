@@ -1,0 +1,5 @@
+TABLE_ExportCrystalReport(t, report_name, export_type)
+
+for(int i=0; i<variable;i++){
+
+}

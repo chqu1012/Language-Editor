@@ -8,10 +8,12 @@ import org.eclipse.jface.text.presentation.PresentationReconciler
 import org.eclipse.jface.text.rules.DefaultDamagerRepairer
 import org.eclipse.jface.text.source.ISourceViewer
 import org.eclipse.swt.widgets.Shell
+import org.eclipse.ui.PlatformUI
 import org.eclipse.ui.editors.text.TextSourceViewerConfiguration
+import org.eclipse.ui.part.FileEditorInput
 
 class LanguageConfiguration extends TextSourceViewerConfiguration {
-	
+
 	LanguageScanner scanner
 
 	override getConfiguredContentTypes(ISourceViewer sourceViewer) {
@@ -26,7 +28,7 @@ class LanguageConfiguration extends TextSourceViewerConfiguration {
 	}
 
 	override getPresentationReconciler(ISourceViewer sourceViewer) {
-		new PresentationReconciler=>[
+		new PresentationReconciler => [
 			val dr = new DefaultDamagerRepairer(getScanner)
 			setDamager(dr, IDocument.DEFAULT_CONTENT_TYPE)
 			setRepairer(dr, IDocument.DEFAULT_CONTENT_TYPE)
@@ -34,12 +36,12 @@ class LanguageConfiguration extends TextSourceViewerConfiguration {
 	}
 
 	override IContentAssistant getContentAssistant(ISourceViewer sourceViewer) {
-		new ContentAssistant=>[
+		new ContentAssistant => [
 			setDocumentPartitioning(getConfiguredDocumentPartitioning(sourceViewer))
 			setContentAssistProcessor(new LanguageCompletionProcessor(), IDocument.DEFAULT_CONTENT_TYPE)
-			informationControlCreator=getInformationControlCreator(sourceViewer)
-			enableAutoActivation=true
-			autoActivationDelay=500
+			informationControlCreator = getInformationControlCreator(sourceViewer)
+			enableAutoActivation = true
+			autoActivationDelay = 500
 		]
 	}
 

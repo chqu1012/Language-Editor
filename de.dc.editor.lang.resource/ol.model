@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<model:LanguageDefinition xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:model="de.dc.editor.lang.model" name="Java" fileExtension="java">
+<model:LanguageDefinition xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:model="de.dc.editor.lang.model" name="OpenLink" fileExtension="ol">
   <contentProposals name="Tokens" image="IMG_ELCL_REMOVE">
     <contents xsi:type="model:Token" name="private" description="private" pattern="private "/>
     <contents xsi:type="model:Token" name="public" description="public" pattern="public "/>
