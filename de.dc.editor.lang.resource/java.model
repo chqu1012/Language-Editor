@@ -1,19 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <model:LanguageDefinition xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:model="de.dc.editor.lang.model" name="Java" fileExtension="java">
-  <contentProposals name="Tokens">
+  <contentProposals name="Tokens" image="IMG_ELCL_REMOVE">
     <contents xsi:type="model:Token" name="private" description="private" pattern="private "/>
     <contents xsi:type="model:Token" name="public" description="public" pattern="public "/>
     <contents xsi:type="model:Token" name="protected" description="protected" pattern="protected "/>
     <contents xsi:type="model:Token" name="abstract" description="abstract" pattern="abstract "/>
     <contents xsi:type="model:Token" name="void" description="void" pattern="void "/>
   </contentProposals>
-  <contentProposals name="Methods">
+  <contentProposals name="Methods" image="IMG_ETOOL_CLEAR">
     <contents xsi:type="model:Function" name="TABLE_ViewCrystalReportWithParams" description="Declare Function TABLE_PrintCrystalReport Lib &quot;olfapi_reporting&quot; (ByVal t as Long, ByVal report_name as String) as Long" pattern="TABLE_ViewCrystalReportWithParams(t, report_name, param_table)"/>
     <contents xsi:type="model:Function" name="TABLE_PrintCrystalReport" description="Declare Function TABLE_PrintCrystalReport Lib &quot;olfapi_reporting&quot; (ByVal t as Long, ByVal report_name as String) as Long" pattern="TABLE_PrintCrystalReport(t, report_name)"/>
     <contents xsi:type="model:Function" name="TABLE_PrintCrystalReportWithParams" description="Declare Function TABLE_PrintCrystalReport Lib &quot;olfapi_reporting&quot; (ByVal t as Long, ByVal report_name as String) as Long" pattern="TABLE_PrintCrystalReportWithParams(t, report_name, param_table)"/>
     <contents xsi:type="model:Function" name="TABLE_ExportCrystalReport" description="Declare Function TABLE_PrintCrystalReport Lib &quot;olfapi_reporting&quot; (ByVal t as Long, ByVal report_name as String) as Long" pattern="TABLE_ExportCrystalReport(t, report_name, export_type)"/>
   </contentProposals>
-  <contentProposals name="Templates">
+  <contentProposals name="Templates" image="IMG_LCL_LINKTO_HELP">
     <contents xsi:type="model:Template" name="for" description="For Schleife" pattern="for(int i=0; i&lt;${variable};i++){}"/>
   </contentProposals>
   <keywordGroups name="Token">
