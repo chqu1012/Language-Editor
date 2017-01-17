@@ -29,6 +29,10 @@ Dynamic change of the content proposal icons
 
 ##Changelog
 
+###0.1.1
+* Integrating filter in the language definition editor
+* File extension recognition
+* Image customizing
 ###0.1.0
 * Initial version
 
