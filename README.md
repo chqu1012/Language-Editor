@@ -25,9 +25,16 @@ Dynamic change of the content proposal icons
 ![Content Proposals](https://github.com/chqu1012/Language-Editor/blob/master/de.dc.editor.lang.wiki/images/content-proposal-image.png "Content Proposalsg")
 ![Content Proposals](https://github.com/chqu1012/Language-Editor/blob/master/de.dc.editor.lang.wiki/images/content-proposal-item-image.png "Content Proposalsg")
 ##Download
+* ![v0.1.2](https://github.com/chqu1012/Language-Editor/blob/master/de.dc.editor.lang.wiki/binaries/de.dc.editor.lang.model.editor-0.1.2-20170118-1935.zip)
 * ![v0.1.0](https://github.com/chqu1012/Language-Editor/blob/master/de.dc.editor.lang.wiki/binaries/de.dc.editor.lang.model.editor-0.1.0-20170117-1955.zip)
 
 ##Changelog
+
+#### 0.1.2
+* Open language definition file from source editor
+* Added comments and quotes as basic configuration
+* Added language definition preference page
+* Bugfix: NPE when no definition is recognized
 
 ### 0.1.1
 * Integrating filter in the language definition editor
