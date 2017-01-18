@@ -49,6 +49,10 @@ public class LanguageDefinitionItemProvider extends NamedElementItemProvider {
 			super.getPropertyDescriptors(object);
 
 			addFileExtensionPropertyDescriptor(object);
+			addUseSingleLineCommentHighlightingPropertyDescriptor(object);
+			addUseMultiLineCommentHighlightingPropertyDescriptor(object);
+			addUseSingleQuotesHighlightingPropertyDescriptor(object);
+			addUseMultiQuotesHighlightingPropertyDescriptor(object);
 		}
 		return itemPropertyDescriptors;
 	}
@@ -71,6 +75,94 @@ public class LanguageDefinitionItemProvider extends NamedElementItemProvider {
 				 false,
 				 false,
 				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+				 null,
+				 null));
+	}
+
+	/**
+	 * This adds a property descriptor for the Use Single Line Comment Highlighting feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addUseSingleLineCommentHighlightingPropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_LanguageDefinition_useSingleLineCommentHighlighting_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_LanguageDefinition_useSingleLineCommentHighlighting_feature", "_UI_LanguageDefinition_type"),
+				 ModelPackage.Literals.LANGUAGE_DEFINITION__USE_SINGLE_LINE_COMMENT_HIGHLIGHTING,
+				 true,
+				 false,
+				 false,
+				 ItemPropertyDescriptor.BOOLEAN_VALUE_IMAGE,
+				 null,
+				 null));
+	}
+
+	/**
+	 * This adds a property descriptor for the Use Multi Line Comment Highlighting feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addUseMultiLineCommentHighlightingPropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_LanguageDefinition_useMultiLineCommentHighlighting_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_LanguageDefinition_useMultiLineCommentHighlighting_feature", "_UI_LanguageDefinition_type"),
+				 ModelPackage.Literals.LANGUAGE_DEFINITION__USE_MULTI_LINE_COMMENT_HIGHLIGHTING,
+				 true,
+				 false,
+				 false,
+				 ItemPropertyDescriptor.BOOLEAN_VALUE_IMAGE,
+				 null,
+				 null));
+	}
+
+	/**
+	 * This adds a property descriptor for the Use Single Quotes Highlighting feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addUseSingleQuotesHighlightingPropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_LanguageDefinition_useSingleQuotesHighlighting_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_LanguageDefinition_useSingleQuotesHighlighting_feature", "_UI_LanguageDefinition_type"),
+				 ModelPackage.Literals.LANGUAGE_DEFINITION__USE_SINGLE_QUOTES_HIGHLIGHTING,
+				 true,
+				 false,
+				 false,
+				 ItemPropertyDescriptor.BOOLEAN_VALUE_IMAGE,
+				 null,
+				 null));
+	}
+
+	/**
+	 * This adds a property descriptor for the Use Multi Quotes Highlighting feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addUseMultiQuotesHighlightingPropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_LanguageDefinition_useMultiQuotesHighlighting_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_LanguageDefinition_useMultiQuotesHighlighting_feature", "_UI_LanguageDefinition_type"),
+				 ModelPackage.Literals.LANGUAGE_DEFINITION__USE_MULTI_QUOTES_HIGHLIGHTING,
+				 true,
+				 false,
+				 false,
+				 ItemPropertyDescriptor.BOOLEAN_VALUE_IMAGE,
 				 null,
 				 null));
 	}
@@ -125,12 +217,10 @@ public class LanguageDefinitionItemProvider extends NamedElementItemProvider {
 	 */
 	@Override
 	public String getText(Object object) {
-//		String label = ((LanguageDefinition)object).getName();
-//		return label == null || label.length() == 0 ?
-//			getString("_UI_LanguageDefinition_type") :
-//			getString("_UI_LanguageDefinition_type") + " " + label;
-		LanguageDefinition ld = (LanguageDefinition)object;
-		return getString("_UI_LanguageDefinition_type")+": "+ld.getName()+" (*."+ld.getFileExtension()+")";
+		String label = ((LanguageDefinition)object).getName();
+		return label == null || label.length() == 0 ?
+			getString("_UI_LanguageDefinition_type") :
+			getString("_UI_LanguageDefinition_type") + " " + label;
 	}
 	
 
@@ -147,6 +237,10 @@ public class LanguageDefinitionItemProvider extends NamedElementItemProvider {
 
 		switch (notification.getFeatureID(LanguageDefinition.class)) {
 			case ModelPackage.LANGUAGE_DEFINITION__FILE_EXTENSION:
+			case ModelPackage.LANGUAGE_DEFINITION__USE_SINGLE_LINE_COMMENT_HIGHLIGHTING:
+			case ModelPackage.LANGUAGE_DEFINITION__USE_MULTI_LINE_COMMENT_HIGHLIGHTING:
+			case ModelPackage.LANGUAGE_DEFINITION__USE_SINGLE_QUOTES_HIGHLIGHTING:
+			case ModelPackage.LANGUAGE_DEFINITION__USE_MULTI_QUOTES_HIGHLIGHTING:
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
 				return;
 			case ModelPackage.LANGUAGE_DEFINITION__CONTENT_PROPOSALS:

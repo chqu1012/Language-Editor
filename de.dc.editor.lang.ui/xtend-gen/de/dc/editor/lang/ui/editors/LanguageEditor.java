@@ -21,12 +21,17 @@ import org.eclipse.ui.editors.text.TextEditor;
 import org.eclipse.ui.internal.registry.EditorDescriptor;
 import org.eclipse.ui.internal.registry.EditorRegistry;
 import org.eclipse.ui.internal.registry.FileEditorMapping;
+import org.eclipse.xtend.lib.annotations.Accessors;
 import org.eclipse.xtext.xbase.lib.Conversions;
 import org.eclipse.xtext.xbase.lib.Functions.Function1;
 import org.eclipse.xtext.xbase.lib.IterableExtensions;
+import org.eclipse.xtext.xbase.lib.Pure;
 
 @SuppressWarnings("all")
 public class LanguageEditor extends TextEditor {
+  @Accessors
+  private String fileExtension;
+  
   public LanguageEditor() {
     IWorkbench _workbench = PlatformUI.getWorkbench();
     IWorkbenchWindow _activeWorkbenchWindow = _workbench.getActiveWorkbenchWindow();
@@ -38,20 +43,21 @@ public class LanguageEditor extends TextEditor {
     final Object firstElement = _structuredSelection.getFirstElement();
     if ((firstElement instanceof File)) {
       final File file = ((File) firstElement);
-      final String ext = file.getFileExtension();
+      String _fileExtension = file.getFileExtension();
+      this.fileExtension = _fileExtension;
       final String editorId = "de.dc.editor.lang.ui.editors.LangEditor";
       IWorkbench _workbench_1 = PlatformUI.getWorkbench();
       IEditorRegistry _editorRegistry = _workbench_1.getEditorRegistry();
       final EditorRegistry editorReg = ((EditorRegistry) _editorRegistry);
       IEditorDescriptor _findEditor = editorReg.findEditor(editorId);
       final EditorDescriptor editor = ((EditorDescriptor) _findEditor);
-      final FileEditorMapping mapping = new FileEditorMapping(ext);
+      final FileEditorMapping mapping = new FileEditorMapping(this.fileExtension);
       mapping.addEditor(editor);
       mapping.setDefaultEditor(editor);
       final IFileEditorMapping[] mappings = editorReg.getFileEditorMappings();
       final Function1<IFileEditorMapping, Boolean> _function = (IFileEditorMapping it) -> {
         String _extension = it.getExtension();
-        return Boolean.valueOf(Objects.equal(_extension, ext));
+        return Boolean.valueOf(Objects.equal(_extension, this.fileExtension));
       };
       Iterable<IFileEditorMapping> _filter = IterableExtensions.<IFileEditorMapping>filter(((Iterable<IFileEditorMapping>)Conversions.doWrapArray(mappings)), _function);
       int _size = IterableExtensions.size(_filter);
@@ -63,8 +69,17 @@ public class LanguageEditor extends TextEditor {
         FileEditorMapping[] _array = newMappings.<FileEditorMapping>toArray(new FileEditorMapping[] {});
         editorReg.setFileEditorMappings(_array);
       }
-      LanguageConfiguration _languageConfiguration = new LanguageConfiguration(ext);
+      LanguageConfiguration _languageConfiguration = new LanguageConfiguration(this.fileExtension);
       this.setSourceViewerConfiguration(_languageConfiguration);
     }
+  }
+  
+  @Pure
+  public String getFileExtension() {
+    return this.fileExtension;
+  }
+  
+  public void setFileExtension(final String fileExtension) {
+    this.fileExtension = fileExtension;
   }
 }

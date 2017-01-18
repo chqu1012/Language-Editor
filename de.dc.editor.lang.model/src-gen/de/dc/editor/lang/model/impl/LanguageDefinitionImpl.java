@@ -33,6 +33,10 @@ import org.eclipse.emf.ecore.util.InternalEList;
  *   <li>{@link de.dc.editor.lang.model.impl.LanguageDefinitionImpl#getFileExtension <em>File Extension</em>}</li>
  *   <li>{@link de.dc.editor.lang.model.impl.LanguageDefinitionImpl#getContentProposals <em>Content Proposals</em>}</li>
  *   <li>{@link de.dc.editor.lang.model.impl.LanguageDefinitionImpl#getKeywordGroups <em>Keyword Groups</em>}</li>
+ *   <li>{@link de.dc.editor.lang.model.impl.LanguageDefinitionImpl#isUseSingleLineCommentHighlighting <em>Use Single Line Comment Highlighting</em>}</li>
+ *   <li>{@link de.dc.editor.lang.model.impl.LanguageDefinitionImpl#isUseMultiLineCommentHighlighting <em>Use Multi Line Comment Highlighting</em>}</li>
+ *   <li>{@link de.dc.editor.lang.model.impl.LanguageDefinitionImpl#isUseSingleQuotesHighlighting <em>Use Single Quotes Highlighting</em>}</li>
+ *   <li>{@link de.dc.editor.lang.model.impl.LanguageDefinitionImpl#isUseMultiQuotesHighlighting <em>Use Multi Quotes Highlighting</em>}</li>
  * </ul>
  *
  * @generated
@@ -77,6 +81,86 @@ public class LanguageDefinitionImpl extends NamedElementImpl implements Language
 	 * @ordered
 	 */
 	protected EList<KeywordGroup> keywordGroups;
+
+	/**
+	 * The default value of the '{@link #isUseSingleLineCommentHighlighting() <em>Use Single Line Comment Highlighting</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #isUseSingleLineCommentHighlighting()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final boolean USE_SINGLE_LINE_COMMENT_HIGHLIGHTING_EDEFAULT = true;
+
+	/**
+	 * The cached value of the '{@link #isUseSingleLineCommentHighlighting() <em>Use Single Line Comment Highlighting</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #isUseSingleLineCommentHighlighting()
+	 * @generated
+	 * @ordered
+	 */
+	protected boolean useSingleLineCommentHighlighting = USE_SINGLE_LINE_COMMENT_HIGHLIGHTING_EDEFAULT;
+
+	/**
+	 * The default value of the '{@link #isUseMultiLineCommentHighlighting() <em>Use Multi Line Comment Highlighting</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #isUseMultiLineCommentHighlighting()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final boolean USE_MULTI_LINE_COMMENT_HIGHLIGHTING_EDEFAULT = true;
+
+	/**
+	 * The cached value of the '{@link #isUseMultiLineCommentHighlighting() <em>Use Multi Line Comment Highlighting</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #isUseMultiLineCommentHighlighting()
+	 * @generated
+	 * @ordered
+	 */
+	protected boolean useMultiLineCommentHighlighting = USE_MULTI_LINE_COMMENT_HIGHLIGHTING_EDEFAULT;
+
+	/**
+	 * The default value of the '{@link #isUseSingleQuotesHighlighting() <em>Use Single Quotes Highlighting</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #isUseSingleQuotesHighlighting()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final boolean USE_SINGLE_QUOTES_HIGHLIGHTING_EDEFAULT = false;
+
+	/**
+	 * The cached value of the '{@link #isUseSingleQuotesHighlighting() <em>Use Single Quotes Highlighting</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #isUseSingleQuotesHighlighting()
+	 * @generated
+	 * @ordered
+	 */
+	protected boolean useSingleQuotesHighlighting = USE_SINGLE_QUOTES_HIGHLIGHTING_EDEFAULT;
+
+	/**
+	 * The default value of the '{@link #isUseMultiQuotesHighlighting() <em>Use Multi Quotes Highlighting</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #isUseMultiQuotesHighlighting()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final boolean USE_MULTI_QUOTES_HIGHLIGHTING_EDEFAULT = false;
+
+	/**
+	 * The cached value of the '{@link #isUseMultiQuotesHighlighting() <em>Use Multi Quotes Highlighting</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #isUseMultiQuotesHighlighting()
+	 * @generated
+	 * @ordered
+	 */
+	protected boolean useMultiQuotesHighlighting = USE_MULTI_QUOTES_HIGHLIGHTING_EDEFAULT;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -147,6 +231,90 @@ public class LanguageDefinitionImpl extends NamedElementImpl implements Language
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public boolean isUseSingleLineCommentHighlighting() {
+		return useSingleLineCommentHighlighting;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setUseSingleLineCommentHighlighting(boolean newUseSingleLineCommentHighlighting) {
+		boolean oldUseSingleLineCommentHighlighting = useSingleLineCommentHighlighting;
+		useSingleLineCommentHighlighting = newUseSingleLineCommentHighlighting;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, ModelPackage.LANGUAGE_DEFINITION__USE_SINGLE_LINE_COMMENT_HIGHLIGHTING, oldUseSingleLineCommentHighlighting, useSingleLineCommentHighlighting));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean isUseMultiLineCommentHighlighting() {
+		return useMultiLineCommentHighlighting;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setUseMultiLineCommentHighlighting(boolean newUseMultiLineCommentHighlighting) {
+		boolean oldUseMultiLineCommentHighlighting = useMultiLineCommentHighlighting;
+		useMultiLineCommentHighlighting = newUseMultiLineCommentHighlighting;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, ModelPackage.LANGUAGE_DEFINITION__USE_MULTI_LINE_COMMENT_HIGHLIGHTING, oldUseMultiLineCommentHighlighting, useMultiLineCommentHighlighting));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean isUseSingleQuotesHighlighting() {
+		return useSingleQuotesHighlighting;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setUseSingleQuotesHighlighting(boolean newUseSingleQuotesHighlighting) {
+		boolean oldUseSingleQuotesHighlighting = useSingleQuotesHighlighting;
+		useSingleQuotesHighlighting = newUseSingleQuotesHighlighting;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, ModelPackage.LANGUAGE_DEFINITION__USE_SINGLE_QUOTES_HIGHLIGHTING, oldUseSingleQuotesHighlighting, useSingleQuotesHighlighting));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean isUseMultiQuotesHighlighting() {
+		return useMultiQuotesHighlighting;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setUseMultiQuotesHighlighting(boolean newUseMultiQuotesHighlighting) {
+		boolean oldUseMultiQuotesHighlighting = useMultiQuotesHighlighting;
+		useMultiQuotesHighlighting = newUseMultiQuotesHighlighting;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, ModelPackage.LANGUAGE_DEFINITION__USE_MULTI_QUOTES_HIGHLIGHTING, oldUseMultiQuotesHighlighting, useMultiQuotesHighlighting));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
@@ -172,6 +340,14 @@ public class LanguageDefinitionImpl extends NamedElementImpl implements Language
 				return getContentProposals();
 			case ModelPackage.LANGUAGE_DEFINITION__KEYWORD_GROUPS:
 				return getKeywordGroups();
+			case ModelPackage.LANGUAGE_DEFINITION__USE_SINGLE_LINE_COMMENT_HIGHLIGHTING:
+				return isUseSingleLineCommentHighlighting();
+			case ModelPackage.LANGUAGE_DEFINITION__USE_MULTI_LINE_COMMENT_HIGHLIGHTING:
+				return isUseMultiLineCommentHighlighting();
+			case ModelPackage.LANGUAGE_DEFINITION__USE_SINGLE_QUOTES_HIGHLIGHTING:
+				return isUseSingleQuotesHighlighting();
+			case ModelPackage.LANGUAGE_DEFINITION__USE_MULTI_QUOTES_HIGHLIGHTING:
+				return isUseMultiQuotesHighlighting();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -196,6 +372,18 @@ public class LanguageDefinitionImpl extends NamedElementImpl implements Language
 				getKeywordGroups().clear();
 				getKeywordGroups().addAll((Collection<? extends KeywordGroup>)newValue);
 				return;
+			case ModelPackage.LANGUAGE_DEFINITION__USE_SINGLE_LINE_COMMENT_HIGHLIGHTING:
+				setUseSingleLineCommentHighlighting((Boolean)newValue);
+				return;
+			case ModelPackage.LANGUAGE_DEFINITION__USE_MULTI_LINE_COMMENT_HIGHLIGHTING:
+				setUseMultiLineCommentHighlighting((Boolean)newValue);
+				return;
+			case ModelPackage.LANGUAGE_DEFINITION__USE_SINGLE_QUOTES_HIGHLIGHTING:
+				setUseSingleQuotesHighlighting((Boolean)newValue);
+				return;
+			case ModelPackage.LANGUAGE_DEFINITION__USE_MULTI_QUOTES_HIGHLIGHTING:
+				setUseMultiQuotesHighlighting((Boolean)newValue);
+				return;
 		}
 		super.eSet(featureID, newValue);
 	}
@@ -217,6 +405,18 @@ public class LanguageDefinitionImpl extends NamedElementImpl implements Language
 			case ModelPackage.LANGUAGE_DEFINITION__KEYWORD_GROUPS:
 				getKeywordGroups().clear();
 				return;
+			case ModelPackage.LANGUAGE_DEFINITION__USE_SINGLE_LINE_COMMENT_HIGHLIGHTING:
+				setUseSingleLineCommentHighlighting(USE_SINGLE_LINE_COMMENT_HIGHLIGHTING_EDEFAULT);
+				return;
+			case ModelPackage.LANGUAGE_DEFINITION__USE_MULTI_LINE_COMMENT_HIGHLIGHTING:
+				setUseMultiLineCommentHighlighting(USE_MULTI_LINE_COMMENT_HIGHLIGHTING_EDEFAULT);
+				return;
+			case ModelPackage.LANGUAGE_DEFINITION__USE_SINGLE_QUOTES_HIGHLIGHTING:
+				setUseSingleQuotesHighlighting(USE_SINGLE_QUOTES_HIGHLIGHTING_EDEFAULT);
+				return;
+			case ModelPackage.LANGUAGE_DEFINITION__USE_MULTI_QUOTES_HIGHLIGHTING:
+				setUseMultiQuotesHighlighting(USE_MULTI_QUOTES_HIGHLIGHTING_EDEFAULT);
+				return;
 		}
 		super.eUnset(featureID);
 	}
@@ -235,6 +435,14 @@ public class LanguageDefinitionImpl extends NamedElementImpl implements Language
 				return contentProposals != null && !contentProposals.isEmpty();
 			case ModelPackage.LANGUAGE_DEFINITION__KEYWORD_GROUPS:
 				return keywordGroups != null && !keywordGroups.isEmpty();
+			case ModelPackage.LANGUAGE_DEFINITION__USE_SINGLE_LINE_COMMENT_HIGHLIGHTING:
+				return useSingleLineCommentHighlighting != USE_SINGLE_LINE_COMMENT_HIGHLIGHTING_EDEFAULT;
+			case ModelPackage.LANGUAGE_DEFINITION__USE_MULTI_LINE_COMMENT_HIGHLIGHTING:
+				return useMultiLineCommentHighlighting != USE_MULTI_LINE_COMMENT_HIGHLIGHTING_EDEFAULT;
+			case ModelPackage.LANGUAGE_DEFINITION__USE_SINGLE_QUOTES_HIGHLIGHTING:
+				return useSingleQuotesHighlighting != USE_SINGLE_QUOTES_HIGHLIGHTING_EDEFAULT;
+			case ModelPackage.LANGUAGE_DEFINITION__USE_MULTI_QUOTES_HIGHLIGHTING:
+				return useMultiQuotesHighlighting != USE_MULTI_QUOTES_HIGHLIGHTING_EDEFAULT;
 		}
 		return super.eIsSet(featureID);
 	}
@@ -251,6 +459,14 @@ public class LanguageDefinitionImpl extends NamedElementImpl implements Language
 		StringBuffer result = new StringBuffer(super.toString());
 		result.append(" (fileExtension: ");
 		result.append(fileExtension);
+		result.append(", useSingleLineCommentHighlighting: ");
+		result.append(useSingleLineCommentHighlighting);
+		result.append(", useMultiLineCommentHighlighting: ");
+		result.append(useMultiLineCommentHighlighting);
+		result.append(", useSingleQuotesHighlighting: ");
+		result.append(useSingleQuotesHighlighting);
+		result.append(", useMultiQuotesHighlighting: ");
+		result.append(useMultiQuotesHighlighting);
 		result.append(')');
 		return result.toString();
 	}

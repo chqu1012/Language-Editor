@@ -105,8 +105,6 @@ import org.eclipse.ui.views.contentoutline.IContentOutlinePage;
 import org.eclipse.ui.views.properties.IPropertySheetPage;
 import org.eclipse.ui.views.properties.PropertySheet;
 import org.eclipse.ui.views.properties.PropertySheetPage;
-
-import de.dc.editor.lang.model.Color;
 import de.dc.editor.lang.model.provider.ModelItemProviderAdapterFactory;
 import de.dc.editor.lang.ui.visitor.DoubleClickSwitch;
 

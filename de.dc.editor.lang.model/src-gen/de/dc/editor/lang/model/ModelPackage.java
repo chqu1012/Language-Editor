@@ -142,13 +142,49 @@ public interface ModelPackage extends EPackage {
 	int LANGUAGE_DEFINITION__KEYWORD_GROUPS = NAMED_ELEMENT_FEATURE_COUNT + 2;
 
 	/**
+	 * The feature id for the '<em><b>Use Single Line Comment Highlighting</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LANGUAGE_DEFINITION__USE_SINGLE_LINE_COMMENT_HIGHLIGHTING = NAMED_ELEMENT_FEATURE_COUNT + 3;
+
+	/**
+	 * The feature id for the '<em><b>Use Multi Line Comment Highlighting</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LANGUAGE_DEFINITION__USE_MULTI_LINE_COMMENT_HIGHLIGHTING = NAMED_ELEMENT_FEATURE_COUNT + 4;
+
+	/**
+	 * The feature id for the '<em><b>Use Single Quotes Highlighting</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LANGUAGE_DEFINITION__USE_SINGLE_QUOTES_HIGHLIGHTING = NAMED_ELEMENT_FEATURE_COUNT + 5;
+
+	/**
+	 * The feature id for the '<em><b>Use Multi Quotes Highlighting</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LANGUAGE_DEFINITION__USE_MULTI_QUOTES_HIGHLIGHTING = NAMED_ELEMENT_FEATURE_COUNT + 6;
+
+	/**
 	 * The number of structural features of the '<em>Language Definition</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int LANGUAGE_DEFINITION_FEATURE_COUNT = NAMED_ELEMENT_FEATURE_COUNT + 3;
+	int LANGUAGE_DEFINITION_FEATURE_COUNT = NAMED_ELEMENT_FEATURE_COUNT + 7;
 
 	/**
 	 * The number of operations of the '<em>Language Definition</em>' class.
@@ -675,6 +711,50 @@ public interface ModelPackage extends EPackage {
 	EReference getLanguageDefinition_KeywordGroups();
 
 	/**
+	 * Returns the meta object for the attribute '{@link de.dc.editor.lang.model.LanguageDefinition#isUseSingleLineCommentHighlighting <em>Use Single Line Comment Highlighting</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Use Single Line Comment Highlighting</em>'.
+	 * @see de.dc.editor.lang.model.LanguageDefinition#isUseSingleLineCommentHighlighting()
+	 * @see #getLanguageDefinition()
+	 * @generated
+	 */
+	EAttribute getLanguageDefinition_UseSingleLineCommentHighlighting();
+
+	/**
+	 * Returns the meta object for the attribute '{@link de.dc.editor.lang.model.LanguageDefinition#isUseMultiLineCommentHighlighting <em>Use Multi Line Comment Highlighting</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Use Multi Line Comment Highlighting</em>'.
+	 * @see de.dc.editor.lang.model.LanguageDefinition#isUseMultiLineCommentHighlighting()
+	 * @see #getLanguageDefinition()
+	 * @generated
+	 */
+	EAttribute getLanguageDefinition_UseMultiLineCommentHighlighting();
+
+	/**
+	 * Returns the meta object for the attribute '{@link de.dc.editor.lang.model.LanguageDefinition#isUseSingleQuotesHighlighting <em>Use Single Quotes Highlighting</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Use Single Quotes Highlighting</em>'.
+	 * @see de.dc.editor.lang.model.LanguageDefinition#isUseSingleQuotesHighlighting()
+	 * @see #getLanguageDefinition()
+	 * @generated
+	 */
+	EAttribute getLanguageDefinition_UseSingleQuotesHighlighting();
+
+	/**
+	 * Returns the meta object for the attribute '{@link de.dc.editor.lang.model.LanguageDefinition#isUseMultiQuotesHighlighting <em>Use Multi Quotes Highlighting</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Use Multi Quotes Highlighting</em>'.
+	 * @see de.dc.editor.lang.model.LanguageDefinition#isUseMultiQuotesHighlighting()
+	 * @see #getLanguageDefinition()
+	 * @generated
+	 */
+	EAttribute getLanguageDefinition_UseMultiQuotesHighlighting();
+
+	/**
 	 * Returns the meta object for class '{@link de.dc.editor.lang.model.ContentProposal <em>Content Proposal</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -948,6 +1028,38 @@ public interface ModelPackage extends EPackage {
 		 * @generated
 		 */
 		EReference LANGUAGE_DEFINITION__KEYWORD_GROUPS = eINSTANCE.getLanguageDefinition_KeywordGroups();
+
+		/**
+		 * The meta object literal for the '<em><b>Use Single Line Comment Highlighting</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute LANGUAGE_DEFINITION__USE_SINGLE_LINE_COMMENT_HIGHLIGHTING = eINSTANCE.getLanguageDefinition_UseSingleLineCommentHighlighting();
+
+		/**
+		 * The meta object literal for the '<em><b>Use Multi Line Comment Highlighting</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute LANGUAGE_DEFINITION__USE_MULTI_LINE_COMMENT_HIGHLIGHTING = eINSTANCE.getLanguageDefinition_UseMultiLineCommentHighlighting();
+
+		/**
+		 * The meta object literal for the '<em><b>Use Single Quotes Highlighting</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute LANGUAGE_DEFINITION__USE_SINGLE_QUOTES_HIGHLIGHTING = eINSTANCE.getLanguageDefinition_UseSingleQuotesHighlighting();
+
+		/**
+		 * The meta object literal for the '<em><b>Use Multi Quotes Highlighting</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute LANGUAGE_DEFINITION__USE_MULTI_QUOTES_HIGHLIGHTING = eINSTANCE.getLanguageDefinition_UseMultiQuotesHighlighting();
 
 		/**
 		 * The meta object literal for the '{@link de.dc.editor.lang.model.impl.ContentProposalImpl <em>Content Proposal</em>}' class.

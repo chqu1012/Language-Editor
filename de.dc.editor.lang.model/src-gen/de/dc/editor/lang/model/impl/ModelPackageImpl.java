@@ -232,6 +232,42 @@ public class ModelPackageImpl extends EPackageImpl implements ModelPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EAttribute getLanguageDefinition_UseSingleLineCommentHighlighting() {
+		return (EAttribute)languageDefinitionEClass.getEStructuralFeatures().get(3);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getLanguageDefinition_UseMultiLineCommentHighlighting() {
+		return (EAttribute)languageDefinitionEClass.getEStructuralFeatures().get(4);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getLanguageDefinition_UseSingleQuotesHighlighting() {
+		return (EAttribute)languageDefinitionEClass.getEStructuralFeatures().get(5);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getLanguageDefinition_UseMultiQuotesHighlighting() {
+		return (EAttribute)languageDefinitionEClass.getEStructuralFeatures().get(6);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EClass getContentProposal() {
 		return contentProposalEClass;
 	}
@@ -433,6 +469,10 @@ public class ModelPackageImpl extends EPackageImpl implements ModelPackage {
 		createEAttribute(languageDefinitionEClass, LANGUAGE_DEFINITION__FILE_EXTENSION);
 		createEReference(languageDefinitionEClass, LANGUAGE_DEFINITION__CONTENT_PROPOSALS);
 		createEReference(languageDefinitionEClass, LANGUAGE_DEFINITION__KEYWORD_GROUPS);
+		createEAttribute(languageDefinitionEClass, LANGUAGE_DEFINITION__USE_SINGLE_LINE_COMMENT_HIGHLIGHTING);
+		createEAttribute(languageDefinitionEClass, LANGUAGE_DEFINITION__USE_MULTI_LINE_COMMENT_HIGHLIGHTING);
+		createEAttribute(languageDefinitionEClass, LANGUAGE_DEFINITION__USE_SINGLE_QUOTES_HIGHLIGHTING);
+		createEAttribute(languageDefinitionEClass, LANGUAGE_DEFINITION__USE_MULTI_QUOTES_HIGHLIGHTING);
 
 		contentProposalEClass = createEClass(CONTENT_PROPOSAL);
 		createEReference(contentProposalEClass, CONTENT_PROPOSAL__CONTENTS);
@@ -513,6 +553,10 @@ public class ModelPackageImpl extends EPackageImpl implements ModelPackage {
 		initEAttribute(getLanguageDefinition_FileExtension(), theEcorePackage.getEString(), "fileExtension", "", 0, 1, LanguageDefinition.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getLanguageDefinition_ContentProposals(), this.getContentProposal(), null, "contentProposals", null, 0, -1, LanguageDefinition.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getLanguageDefinition_KeywordGroups(), this.getKeywordGroup(), null, "keywordGroups", null, 0, -1, LanguageDefinition.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getLanguageDefinition_UseSingleLineCommentHighlighting(), theEcorePackage.getEBoolean(), "useSingleLineCommentHighlighting", "true", 0, 1, LanguageDefinition.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getLanguageDefinition_UseMultiLineCommentHighlighting(), theEcorePackage.getEBoolean(), "useMultiLineCommentHighlighting", "true", 0, 1, LanguageDefinition.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getLanguageDefinition_UseSingleQuotesHighlighting(), theEcorePackage.getEBoolean(), "useSingleQuotesHighlighting", "false", 0, 1, LanguageDefinition.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getLanguageDefinition_UseMultiQuotesHighlighting(), theEcorePackage.getEBoolean(), "useMultiQuotesHighlighting", "false", 0, 1, LanguageDefinition.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(contentProposalEClass, ContentProposal.class, "ContentProposal", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getContentProposal_Contents(), this.getContent(), null, "contents", null, 0, -1, ContentProposal.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
