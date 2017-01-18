@@ -16,6 +16,17 @@ public enum LanguageDefinitionProvider {
 	
 	Map<String, LanguageDefinition> definitions;
 	
+	public String getDefinitionPathByExtension(String fileExtension){
+		String pathsString = PlatformUI.getPreferenceStore().getString(ILanguageConstants.LANGUAGE_FILES_PATH);
+		String[] paths = pathsString.split(ILanguageConstants.LANGUAGE_FILES_SEPARATOR);
+		for (String path : paths) {
+			if(path.endsWith(fileExtension)){
+				return path;
+			}
+		}
+		return "";
+	}
+	
 	public LanguageDefinition getDefinitionByExtension(String fileExtension){
 		definitions = new HashMap<>();
 		String pathsString = PlatformUI.getPreferenceStore().getString(ILanguageConstants.LANGUAGE_FILES_PATH);
@@ -25,7 +36,6 @@ public enum LanguageDefinitionProvider {
 			LanguageDefinition model;
 			try {
 				model = file.load(path);
-				System.out.println(model.getFileExtension());
 				definitions.put(model.getFileExtension(), model);
 			} catch (IOException e) {
 				e.printStackTrace();

@@ -5,7 +5,7 @@
     <contents xsi:type="model:Token" name="sqrt" pattern="sqrt"/>
   </contentProposals>
   <keywordGroups name="Maths">
-    <color r="128" g="255"/>
+    <color g="255"/>
     <keyList name="abs" value="abs"/>
     <keyList name="function" value="function"/>
     <keyList name="sqrt" value="sqrt"/>

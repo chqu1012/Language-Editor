@@ -38,5 +38,27 @@
                          restorable="true">
                    </view>
                 </extension>
-
+   <extension
+         point="org.eclipse.ui.popupMenus">
+      <objectContribution
+            objectClass="org.eclipse.ui.IEditorInput"
+            nameFilter="*.*"
+            id="de.dc.editor.lang.ui.editors.LangEditor.contribution1">
+         <menu
+               label="Language Editor"
+               path="additions"
+               id="de.dc.editor.lang.ui.editors.LangEditor.menu1">
+            <separator
+                  name="group1">
+            </separator>
+         </menu>
+         <action
+               label="Open Language Data Model"
+               class="de.dc.editor.lang.ui.editors.action.OpenLanguageDataModelAction"
+               menubarPath="de.dc.editor.lang.ui.editors.LangEditor.menu1/group1"
+               enablesFor="1"
+               id="de.dc.editor.lang.ui.editors.OpenLanguageDataModel">
+         </action>
+      </objectContribution>
+   </extension>
 </plugin>
