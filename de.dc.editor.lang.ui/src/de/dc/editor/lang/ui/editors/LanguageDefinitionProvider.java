@@ -4,6 +4,8 @@ import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
 
+import org.eclipse.jface.dialogs.MessageDialog;
+import org.eclipse.swt.widgets.Shell;
 import org.eclipse.ui.PlatformUI;
 
 import de.dc.editor.lang.model.LanguageDefinition;
@@ -28,6 +30,10 @@ public enum LanguageDefinitionProvider {
 				e.printStackTrace();
 			}
 		}
-		return definitions.get(fileExtension);
+		LanguageDefinition definition = definitions.get(fileExtension);
+		if (definition == null) {
+			MessageDialog.openError(new Shell(), "Language Definition Error", "No "+fileExtension+" file extension registered in the file association");
+		}
+		return definition;
 	}
 }
