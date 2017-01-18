@@ -21,14 +21,11 @@ Require-Bundle: org.eclipse.core.runtime,
  org.eclipse.ui.forms;bundle-version="3.7.0",
  org.eclipse.ui.ide;bundle-version="3.12.0"
 Bundle-RequiredExecutionEnvironment: JavaSE-1.8
-Bundle-ClassPath: .,
- lib/org.eclipse.cdt.core.source_6.2.0.201612061315.jar,
- lib/org.eclipse.cdt.core_6.2.0.201612061315.jar
+Bundle-ClassPath: .
 Export-Package: de.dc.editor.lang.ui.editors,
  de.dc.editor.lang.ui.editors.custom,
  de.dc.editor.lang.ui.editors.generic,
  de.dc.editor.lang.ui.file,
- de.dc.editor.lang.ui.file.format,
  de.dc.editor.lang.ui.preference,
  de.dc.editor.lang.ui.visitor
 
