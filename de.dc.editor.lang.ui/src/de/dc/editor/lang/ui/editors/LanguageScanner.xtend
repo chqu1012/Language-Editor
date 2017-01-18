@@ -25,30 +25,35 @@ import de.dc.editor.lang.model.ModelPackage
 import de.dc.editor.lang.ui.file.LangFile
 
 class LanguageScanner extends RuleBasedScanner {
-	new() {
-		try {
-			if (MODEL_PATH === null || MODEL_PATH.equals("")) {
-				var FileDialog fd = new FileDialog(new Shell(), SWT.OPEN)
-				var String open = fd.open()
-				if (open !== null) {
-					PlatformUI.getPreferenceStore().setValue(ILanguageConstants.LANGUAGE_PATH, open)
-					init()
-				} else {
-					MessageDialog.openError(new Shell(), "Language Definition Error",
-						"File cannot be found, please set up the language definition in the preferences.")
-				}
-			} else {
-				init()
-			}
-		} catch (IOException e) {
-			e.printStackTrace()
-		}
-
+	
+	String fileExtension
+	
+	new(String fileExtension) {
+		this.fileExtension=fileExtension
+//		try {
+//			if (MODEL_PATH === null || MODEL_PATH.equals("")) {
+//				var FileDialog fd = new FileDialog(new Shell(), SWT.OPEN)
+//				var String open = fd.open()
+//				if (open !== null) {
+//					PlatformUI.getPreferenceStore().setValue(ILanguageConstants.LANGUAGE_PATH, open)
+//					init()
+//				} else {
+//					MessageDialog.openError(new Shell(), "Language Definition Error",
+//						"File cannot be found, please set up the language definition in the preferences.")
+//				}
+//			} else {
+//				init()
+//			}
+//		} catch (IOException e) {
+//			e.printStackTrace()
+//		}
+		init
 	}
 
 	def private void init() throws FileNotFoundException, IOException {
-		var LangFile file = new LangFile()
-		var LanguageDefinition model = file.load(ILanguageConstants.MODEL_PATH)
+//		var LangFile file = new LangFile()
+//		var LanguageDefinition model = file.load(ILanguageConstants.MODEL_PATH)
+		val model = LanguageDefinitionProvider.instance.getDefinitionByExtension(fileExtension);
 		var List<IRule> rules = new ArrayList<IRule>()
 		for (KeywordGroup group : model.getKeywordGroups()) {
 			var de.dc.editor.lang.model.Color color = group.getColor()

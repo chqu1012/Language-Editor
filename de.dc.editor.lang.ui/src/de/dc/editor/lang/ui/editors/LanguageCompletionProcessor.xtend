@@ -31,7 +31,12 @@ class LanguageCompletionProcessor implements IContentAssistProcessor {
 	final TemplateContextType fContextType = new TemplateContextType(CONTEXT_ID, "Common Language Variables")
 	final TemplateContextType fKeywordContextType = new TemplateContextType("language_keywords", "Language Keywords")
 	final TemplateContextType fFunctionContextType = new TemplateContextType("functions", "Language Functions")
-
+	String fileExtension
+	
+	new(String fileExtension) {
+		this.fileExtension=fileExtension
+	}
+	
 	override computeCompletionProposals(ITextViewer viewer, int offset) {
 		var document = viewer.document
 		var region = new Region(offset, 0)
@@ -56,8 +61,11 @@ class LanguageCompletionProcessor implements IContentAssistProcessor {
 
 	def getAddTaskTemplateProposals(TemplateContext templateContext, Region region,
 		List<ICompletionProposal> p) {
-		var file = new LangFile
-		var model = file.load(ILanguageConstants.MODEL_PATH)
+//		var file = new LangFile
+//		var model = file.load(ILanguageConstants.MODEL_PATH)
+		
+		val model = LanguageDefinitionProvider.instance.getDefinitionByExtension(fileExtension);
+
 		for (ContentProposal prop : model.getContentProposals()) {
 			ECollections.sort(prop.contents, [ o1, o2| o1.name.compareTo(o2.name)])
 			var img = PlatformUI.workbench.sharedImages.getImage(prop.image.getName)
@@ -77,8 +85,11 @@ class LanguageCompletionProcessor implements IContentAssistProcessor {
 
 	def getFunctionTemplateProposals(TemplateContext templateContext, Region region,
 		List<ICompletionProposal> p) {
-		var file = new LangFile
-		var model = file.load(ILanguageConstants.MODEL_PATH)
+//		var file = new LangFile
+//		var model = file.load(ILanguageConstants.MODEL_PATH)
+
+		val model = LanguageDefinitionProvider.instance.getDefinitionByExtension(fileExtension);
+
 		for (ContentProposal prop : model.contentProposals) {
 			ECollections.sort(prop.contents, [ o1, o2| o1.name.compareTo(o2.name)])
 			var img = PlatformUI.workbench.sharedImages.getImage(prop.image.getName)
@@ -93,8 +104,11 @@ class LanguageCompletionProcessor implements IContentAssistProcessor {
 
 	def getKeywordTemplateProposals(TemplateContext templateContext, Region region,
 		List<ICompletionProposal> p){
-		var file = new LangFile
-		var model = file.load(ILanguageConstants.MODEL_PATH)
+//		var file = new LangFile
+//		var model = file.load(ILanguageConstants.MODEL_PATH)
+
+		val model = LanguageDefinitionProvider.instance.getDefinitionByExtension(fileExtension);
+
 		for (ContentProposal prop : model.contentProposals) {
 			ECollections.sort(prop.contents, [ o1, o2| o1.name.compareTo(o2.name)])
 			var img = PlatformUI.workbench.sharedImages.getImage(prop.image.getName)

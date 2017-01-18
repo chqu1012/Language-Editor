@@ -922,10 +922,8 @@ public class ModelEditor
 						ISelection selection = selectionViewer.getSelection();	
 						if (selection instanceof IStructuredSelection) {
 							IStructuredSelection ss = (IStructuredSelection) selection;
-							if (ss.getFirstElement() instanceof Color) {
-								doubleClickSwitch.doSwitch((EObject) ss.getFirstElement());
-						        doSave(null);
-							}							
+							doubleClickSwitch.doSwitch((EObject) ss.getFirstElement());
+					        doSave(null);
 						}
 					}
 				});

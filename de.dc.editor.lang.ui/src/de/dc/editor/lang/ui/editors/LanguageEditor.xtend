@@ -4,7 +4,6 @@ import java.util.ArrayList
 import java.util.List
 import org.eclipse.core.internal.resources.File
 import org.eclipse.jdt.internal.ui.packageview.PackageExplorerPart
-import org.eclipse.swt.widgets.Composite
 import org.eclipse.ui.IFileEditorMapping
 import org.eclipse.ui.PlatformUI
 import org.eclipse.ui.editors.text.TextEditor
@@ -37,13 +36,7 @@ class LanguageEditor extends TextEditor{
 				newMappings+=mapping
 		    }
 		    editorReg.setFileEditorMappings(newMappings.toArray(#[]))
+			setSourceViewerConfiguration(new LanguageConfiguration(ext))
 		}
-		setSourceViewerConfiguration(new LanguageConfiguration())
 	}
-	
-	override createPartControl(Composite parent) {
-		super.createPartControl(parent)
-	}
-	
-	
 }

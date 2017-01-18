@@ -125,10 +125,12 @@ public class LanguageDefinitionItemProvider extends NamedElementItemProvider {
 	 */
 	@Override
 	public String getText(Object object) {
-		String label = ((LanguageDefinition)object).getName();
-		return label == null || label.length() == 0 ?
-			getString("_UI_LanguageDefinition_type") :
-			getString("_UI_LanguageDefinition_type") + " " + label;
+//		String label = ((LanguageDefinition)object).getName();
+//		return label == null || label.length() == 0 ?
+//			getString("_UI_LanguageDefinition_type") :
+//			getString("_UI_LanguageDefinition_type") + " " + label;
+		LanguageDefinition ld = (LanguageDefinition)object;
+		return getString("_UI_LanguageDefinition_type")+": "+ld.getName()+" (*."+ld.getFileExtension()+")";
 	}
 	
 
