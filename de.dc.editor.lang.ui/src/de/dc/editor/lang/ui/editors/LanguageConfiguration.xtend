@@ -3,7 +3,6 @@ package de.dc.editor.lang.ui.editors
 import org.eclipse.jface.text.DefaultInformationControl
 import org.eclipse.jface.text.IDocument
 import org.eclipse.jface.text.contentassist.ContentAssistant
-import org.eclipse.jface.text.contentassist.IContentAssistant
 import org.eclipse.jface.text.presentation.PresentationReconciler
 import org.eclipse.jface.text.rules.DefaultDamagerRepairer
 import org.eclipse.jface.text.source.ISourceViewer
@@ -18,12 +17,12 @@ class LanguageConfiguration extends TextSourceViewerConfiguration {
 	new(String fileExtension) {
 		this.fileExtension=fileExtension
 	}
-
+	
 	override getConfiguredContentTypes(ISourceViewer sourceViewer) {
 		#[IDocument.DEFAULT_CONTENT_TYPE]
 	}
 
-	def private LanguageScanner getScanner() {
+	def LanguageScanner getScanner() {
 		if (scanner === null) {
 			scanner = new LanguageScanner(fileExtension)
 		}
@@ -38,7 +37,7 @@ class LanguageConfiguration extends TextSourceViewerConfiguration {
 		]
 	}
 
-	override IContentAssistant getContentAssistant(ISourceViewer sourceViewer) {
+	override getContentAssistant(ISourceViewer sourceViewer) {
 		new ContentAssistant => [
 			setDocumentPartitioning(getConfiguredDocumentPartitioning(sourceViewer))
 			setContentAssistProcessor(new LanguageCompletionProcessor(fileExtension), IDocument.DEFAULT_CONTENT_TYPE)

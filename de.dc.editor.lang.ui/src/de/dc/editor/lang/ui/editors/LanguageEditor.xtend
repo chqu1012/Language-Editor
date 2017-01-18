@@ -34,8 +34,8 @@ class LanguageEditor extends TextEditor{
 			if(!extExist){
 				newMappings+=mappings
 				newMappings+=mapping
-		    }
-		    editorReg.setFileEditorMappings(newMappings.toArray(#[]))
+			    editorReg.setFileEditorMappings(newMappings.toArray(#[]))
+		    } 
 			setSourceViewerConfiguration(new LanguageConfiguration(ext))
 		}
 	}

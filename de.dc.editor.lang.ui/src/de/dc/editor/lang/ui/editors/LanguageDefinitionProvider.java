@@ -25,15 +25,15 @@ public enum LanguageDefinitionProvider {
 			LanguageDefinition model;
 			try {
 				model = file.load(path);
+				System.out.println(model.getFileExtension());
 				definitions.put(model.getFileExtension(), model);
 			} catch (IOException e) {
 				e.printStackTrace();
 			}
 		}
-		LanguageDefinition definition = definitions.get(fileExtension);
-		if (definition == null) {
-			MessageDialog.openError(new Shell(), "Language Definition Error", "No "+fileExtension+" file extension registered in the file association");
+		if (definitions.get(fileExtension)==null) {
+			MessageDialog.openError(new Shell(), "File Extension Error", "File extension not supported in Language Editor, please enhanced the file association in preferences.");
 		}
-		return definition;
+		return definitions.get(fileExtension);
 	}
 }

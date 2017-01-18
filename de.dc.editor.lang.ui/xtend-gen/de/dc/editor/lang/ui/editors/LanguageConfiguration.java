@@ -20,16 +20,22 @@ import org.eclipse.xtext.xbase.lib.Procedures.Procedure1;
 public class LanguageConfiguration extends TextSourceViewerConfiguration {
   private LanguageScanner scanner;
   
+  private String fileExtension;
+  
+  public LanguageConfiguration(final String fileExtension) {
+    this.fileExtension = fileExtension;
+  }
+  
   @Override
   public String[] getConfiguredContentTypes(final ISourceViewer sourceViewer) {
     return new String[] { IDocument.DEFAULT_CONTENT_TYPE };
   }
   
-  private LanguageScanner getScanner() {
+  public LanguageScanner getScanner() {
     LanguageScanner _xblockexpression = null;
     {
       if ((this.scanner == null)) {
-        LanguageScanner _languageScanner = new LanguageScanner();
+        LanguageScanner _languageScanner = new LanguageScanner(this.fileExtension);
         this.scanner = _languageScanner;
       }
       _xblockexpression = this.scanner;
@@ -55,7 +61,7 @@ public class LanguageConfiguration extends TextSourceViewerConfiguration {
     final Procedure1<ContentAssistant> _function = (ContentAssistant it) -> {
       String _configuredDocumentPartitioning = this.getConfiguredDocumentPartitioning(sourceViewer);
       it.setDocumentPartitioning(_configuredDocumentPartitioning);
-      LanguageCompletionProcessor _languageCompletionProcessor = new LanguageCompletionProcessor();
+      LanguageCompletionProcessor _languageCompletionProcessor = new LanguageCompletionProcessor(this.fileExtension);
       it.setContentAssistProcessor(_languageCompletionProcessor, IDocument.DEFAULT_CONTENT_TYPE);
       IInformationControlCreator _informationControlCreator = this.getInformationControlCreator(sourceViewer);
       it.setInformationControlCreator(_informationControlCreator);

@@ -9,7 +9,6 @@ import org.eclipse.core.internal.resources.File;
 import org.eclipse.jdt.internal.ui.packageview.PackageExplorerPart;
 import org.eclipse.jface.viewers.ITreeSelection;
 import org.eclipse.jface.viewers.TreeViewer;
-import org.eclipse.swt.widgets.Composite;
 import org.eclipse.ui.IEditorDescriptor;
 import org.eclipse.ui.IEditorRegistry;
 import org.eclipse.ui.IFileEditorMapping;
@@ -61,16 +60,11 @@ public class LanguageEditor extends TextEditor {
       if ((!extExist)) {
         Iterables.<IFileEditorMapping>addAll(newMappings, ((Iterable<? extends IFileEditorMapping>)Conversions.doWrapArray(mappings)));
         newMappings.add(mapping);
+        FileEditorMapping[] _array = newMappings.<FileEditorMapping>toArray(new FileEditorMapping[] {});
+        editorReg.setFileEditorMappings(_array);
       }
-      FileEditorMapping[] _array = newMappings.<FileEditorMapping>toArray(new FileEditorMapping[] {});
-      editorReg.setFileEditorMappings(_array);
+      LanguageConfiguration _languageConfiguration = new LanguageConfiguration(ext);
+      this.setSourceViewerConfiguration(_languageConfiguration);
     }
-    LanguageConfiguration _languageConfiguration = new LanguageConfiguration();
-    this.setSourceViewerConfiguration(_languageConfiguration);
-  }
-  
-  @Override
-  public void createPartControl(final Composite parent) {
-    super.createPartControl(parent);
   }
 }

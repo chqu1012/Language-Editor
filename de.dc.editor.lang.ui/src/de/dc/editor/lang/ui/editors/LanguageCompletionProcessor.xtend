@@ -61,19 +61,17 @@ class LanguageCompletionProcessor implements IContentAssistProcessor {
 
 	def getAddTaskTemplateProposals(TemplateContext templateContext, Region region,
 		List<ICompletionProposal> p) {
-//		var file = new LangFile
-//		var model = file.load(ILanguageConstants.MODEL_PATH)
-		
 		val model = LanguageDefinitionProvider.instance.getDefinitionByExtension(fileExtension);
-
-		for (ContentProposal prop : model.getContentProposals()) {
-			ECollections.sort(prop.contents, [ o1, o2| o1.name.compareTo(o2.name)])
-			var img = PlatformUI.workbench.sharedImages.getImage(prop.image.getName)
-			for (Content content : prop.contents.filter[it instanceof de.dc.editor.lang.model.Template]) {
-				var String name = content.getName()
-				var String descr = content.getDescription()
-				var String pattern = content.getPattern()
-				p+=new TemplateProposal(new Template(name, descr, CONTEXT_ID, pattern, false), templateContext,region, img)
+		if(model!=null){
+			for (ContentProposal prop : model.getContentProposals()) {
+				ECollections.sort(prop.contents, [ o1, o2| o1.name.compareTo(o2.name)])
+				var img = PlatformUI.workbench.sharedImages.getImage(prop.image.getName)
+				for (Content content : prop.contents.filter[it instanceof de.dc.editor.lang.model.Template]) {
+					var String name = content.getName()
+					var String descr = content.getDescription()
+					var String pattern = content.getPattern()
+					p+=new TemplateProposal(new Template(name, descr, CONTEXT_ID, pattern, false), templateContext,region, img)
+				}
 			}
 		}
 	}
@@ -85,38 +83,34 @@ class LanguageCompletionProcessor implements IContentAssistProcessor {
 
 	def getFunctionTemplateProposals(TemplateContext templateContext, Region region,
 		List<ICompletionProposal> p) {
-//		var file = new LangFile
-//		var model = file.load(ILanguageConstants.MODEL_PATH)
-
 		val model = LanguageDefinitionProvider.instance.getDefinitionByExtension(fileExtension);
-
-		for (ContentProposal prop : model.contentProposals) {
-			ECollections.sort(prop.contents, [ o1, o2| o1.name.compareTo(o2.name)])
-			var img = PlatformUI.workbench.sharedImages.getImage(prop.image.getName)
-			for (Content content : prop.contents.filter[it instanceof Function]) {
-				var name = content.name
-				var descr = content.description
-				var pattern = content.pattern
-				p+=new TemplateProposal(new Template(name, descr, CONTEXT_ID, pattern, false), templateContext, region, img)
+		if(model!=null){
+			for (ContentProposal prop : model.contentProposals) {
+				ECollections.sort(prop.contents, [ o1, o2| o1.name.compareTo(o2.name)])
+				var img = PlatformUI.workbench.sharedImages.getImage(prop.image.getName)
+				for (Content content : prop.contents.filter[it instanceof Function]) {
+					var name = content.name
+					var descr = content.description
+					var pattern = content.pattern
+					p+=new TemplateProposal(new Template(name, descr, CONTEXT_ID, pattern, false), templateContext, region, img)
+				}
 			}
 		}
 	}
 
 	def getKeywordTemplateProposals(TemplateContext templateContext, Region region,
 		List<ICompletionProposal> p){
-//		var file = new LangFile
-//		var model = file.load(ILanguageConstants.MODEL_PATH)
-
 		val model = LanguageDefinitionProvider.instance.getDefinitionByExtension(fileExtension);
-
-		for (ContentProposal prop : model.contentProposals) {
-			ECollections.sort(prop.contents, [ o1, o2| o1.name.compareTo(o2.name)])
-			var img = PlatformUI.workbench.sharedImages.getImage(prop.image.getName)
-			for (Content content : prop.contents.filter[it instanceof Token]) {
-				var name = content.name
-				var descr = content.description
-				var pattern = content.pattern
-				p+=new TemplateProposal(new Template(name, descr, CONTEXT_ID, pattern, false), templateContext, region, img)
+		if(model!=null){
+			for (ContentProposal prop : model.contentProposals) {
+				ECollections.sort(prop.contents, [ o1, o2| o1.name.compareTo(o2.name)])
+				var img = PlatformUI.workbench.sharedImages.getImage(prop.image.getName)
+				for (Content content : prop.contents.filter[it instanceof Token]) {
+					var name = content.name
+					var descr = content.description
+					var pattern = content.pattern
+					p+=new TemplateProposal(new Template(name, descr, CONTEXT_ID, pattern, false), templateContext, region, img)
+				}
 			}
 		}
 	}

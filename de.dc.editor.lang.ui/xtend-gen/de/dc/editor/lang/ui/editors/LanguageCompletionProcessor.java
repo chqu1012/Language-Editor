@@ -1,13 +1,13 @@
 package de.dc.editor.lang.ui.editors;
 
+import com.google.common.base.Objects;
 import de.dc.editor.lang.model.Content;
 import de.dc.editor.lang.model.ContentProposal;
 import de.dc.editor.lang.model.Function;
 import de.dc.editor.lang.model.Image;
 import de.dc.editor.lang.model.LanguageDefinition;
 import de.dc.editor.lang.model.Token;
-import de.dc.editor.lang.ui.editors.ILanguageConstants;
-import de.dc.editor.lang.ui.file.LangFile;
+import de.dc.editor.lang.ui.editors.LanguageDefinitionProvider;
 import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.HashMap;
@@ -32,7 +32,6 @@ import org.eclipse.ui.ISharedImages;
 import org.eclipse.ui.IWorkbench;
 import org.eclipse.ui.PlatformUI;
 import org.eclipse.xtend2.lib.StringConcatenation;
-import org.eclipse.xtext.xbase.lib.Exceptions;
 import org.eclipse.xtext.xbase.lib.Functions.Function1;
 import org.eclipse.xtext.xbase.lib.IterableExtensions;
 
@@ -45,6 +44,12 @@ public class LanguageCompletionProcessor implements IContentAssistProcessor {
   private final TemplateContextType fKeywordContextType = new TemplateContextType("language_keywords", "Language Keywords");
   
   private final TemplateContextType fFunctionContextType = new TemplateContextType("functions", "Language Functions");
+  
+  private String fileExtension;
+  
+  public LanguageCompletionProcessor(final String fileExtension) {
+    this.fileExtension = fileExtension;
+  }
   
   @Override
   public ICompletionProposal[] computeCompletionProposals(final ITextViewer viewer, final int offset) {
@@ -81,9 +86,9 @@ public class LanguageCompletionProcessor implements IContentAssistProcessor {
   }
   
   public void getAddTaskTemplateProposals(final TemplateContext templateContext, final Region region, final List<ICompletionProposal> p) {
-    try {
-      LangFile file = new LangFile();
-      LanguageDefinition model = file.load(ILanguageConstants.MODEL_PATH);
+    final LanguageDefinition model = LanguageDefinitionProvider.instance.getDefinitionByExtension(this.fileExtension);
+    boolean _notEquals = (!Objects.equal(model, null));
+    if (_notEquals) {
       EList<ContentProposal> _contentProposals = model.getContentProposals();
       for (final ContentProposal prop : _contentProposals) {
         {
@@ -116,8 +121,6 @@ public class LanguageCompletionProcessor implements IContentAssistProcessor {
           }
         }
       }
-    } catch (Throwable _e) {
-      throw Exceptions.sneakyThrow(_e);
     }
   }
   
@@ -142,9 +145,9 @@ public class LanguageCompletionProcessor implements IContentAssistProcessor {
   }
   
   public void getFunctionTemplateProposals(final TemplateContext templateContext, final Region region, final List<ICompletionProposal> p) {
-    try {
-      LangFile file = new LangFile();
-      LanguageDefinition model = file.load(ILanguageConstants.MODEL_PATH);
+    final LanguageDefinition model = LanguageDefinitionProvider.instance.getDefinitionByExtension(this.fileExtension);
+    boolean _notEquals = (!Objects.equal(model, null));
+    if (_notEquals) {
       EList<ContentProposal> _contentProposals = model.getContentProposals();
       for (final ContentProposal prop : _contentProposals) {
         {
@@ -177,15 +180,13 @@ public class LanguageCompletionProcessor implements IContentAssistProcessor {
           }
         }
       }
-    } catch (Throwable _e) {
-      throw Exceptions.sneakyThrow(_e);
     }
   }
   
   public void getKeywordTemplateProposals(final TemplateContext templateContext, final Region region, final List<ICompletionProposal> p) {
-    try {
-      LangFile file = new LangFile();
-      LanguageDefinition model = file.load(ILanguageConstants.MODEL_PATH);
+    final LanguageDefinition model = LanguageDefinitionProvider.instance.getDefinitionByExtension(this.fileExtension);
+    boolean _notEquals = (!Objects.equal(model, null));
+    if (_notEquals) {
       EList<ContentProposal> _contentProposals = model.getContentProposals();
       for (final ContentProposal prop : _contentProposals) {
         {
@@ -218,8 +219,6 @@ public class LanguageCompletionProcessor implements IContentAssistProcessor {
           }
         }
       }
-    } catch (Throwable _e) {
-      throw Exceptions.sneakyThrow(_e);
     }
   }
   
