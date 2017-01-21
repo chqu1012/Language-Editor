@@ -73,20 +73,6 @@
                label="Export to Key Group"
                menubarPath="de.dc.editor.lang.ui.editors.LangEditor.menu1/group1">
          </action>
-         <action
-               class="de.dc.editor.lang.ui.editors.action.SelectionToContentProposalAction"
-               enablesFor="1"
-               id="de.dc.editor.lang.ui.editors.ExportToKeyGroup"
-               label="Export to Key Group"
-               menubarPath="de.dc.editor.lang.ui.editors.LangEditor.menu1/group1">
-         </action>
-         <action
-               class="de.dc.editor.lang.ui.editors.action.SelectionToContentProposalAction"
-               enablesFor="1"
-               id="de.dc.editor.lang.ui.editors.ExportToContentProposal"
-               label="Export to Key Group"
-               menubarPath="de.dc.editor.lang.ui.editors.LangEditor.menu1/group1">
-         </action>
       </objectContribution>
    </extension>
 </plugin>
