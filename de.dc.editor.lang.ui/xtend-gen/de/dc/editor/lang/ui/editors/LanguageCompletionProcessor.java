@@ -13,7 +13,6 @@ import java.util.Comparator;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
-import java.util.Map;
 import org.eclipse.emf.common.util.ECollections;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.jface.text.IDocument;
@@ -112,9 +111,9 @@ public class LanguageCompletionProcessor implements IContentAssistProcessor {
           for (final Content content : _filter) {
             {
               String name = content.getName();
-              String descr = content.getDescription();
-              String pattern = content.getPattern();
-              Template _template = new Template(name, descr, LanguageCompletionProcessor.CONTEXT_ID, pattern, false);
+              String pattern = content.getValue();
+              String _name_1 = prop.getName();
+              Template _template = new Template(name, _name_1, LanguageCompletionProcessor.CONTEXT_ID, pattern, false);
               TemplateProposal _templateProposal = new TemplateProposal(_template, templateContext, region, img);
               p.add(_templateProposal);
             }
@@ -171,9 +170,9 @@ public class LanguageCompletionProcessor implements IContentAssistProcessor {
           for (final Content content : _filter) {
             {
               String name = content.getName();
-              String descr = content.getDescription();
-              String pattern = content.getPattern();
-              Template _template = new Template(name, descr, LanguageCompletionProcessor.CONTEXT_ID, pattern, false);
+              String pattern = content.getValue();
+              String _name_1 = prop.getName();
+              Template _template = new Template(name, _name_1, LanguageCompletionProcessor.CONTEXT_ID, pattern, false);
               TemplateProposal _templateProposal = new TemplateProposal(_template, templateContext, region, img);
               p.add(_templateProposal);
             }
@@ -210,9 +209,9 @@ public class LanguageCompletionProcessor implements IContentAssistProcessor {
           for (final Content content : _filter) {
             {
               String name = content.getName();
-              String descr = content.getDescription();
-              String pattern = content.getPattern();
-              Template _template = new Template(name, descr, LanguageCompletionProcessor.CONTEXT_ID, pattern, false);
+              String pattern = content.getValue();
+              String _name_1 = prop.getName();
+              Template _template = new Template(name, _name_1, LanguageCompletionProcessor.CONTEXT_ID, pattern, false);
               TemplateProposal _templateProposal = new TemplateProposal(_template, templateContext, region, img);
               p.add(_templateProposal);
             }
@@ -223,13 +222,13 @@ public class LanguageCompletionProcessor implements IContentAssistProcessor {
   }
   
   public void getVariableTemplateProposals(final TemplateContext templateContext, final Region region, final List<ICompletionProposal> p) {
-    Map<String, String> n = new HashMap<String, String>();
+    HashMap<Object, Object> n = new HashMap<Object, Object>();
     org.eclipse.swt.graphics.Image img = null;
-    for (Iterator<String> i = n.keySet().iterator(); i.hasNext();) {
+    for (Iterator<Object> i = n.keySet().iterator(); i.hasNext();) {
       {
-        String _next = i.next();
+        Object _next = i.next();
         String name = ((String) _next);
-        String _get = n.get(name);
+        Object _get = n.get(name);
         String description = ((String) _get);
         Template _generateVariableTemplate = this.generateVariableTemplate(name, description);
         TemplateProposal _templateProposal = new TemplateProposal(_generateVariableTemplate, templateContext, region, img);

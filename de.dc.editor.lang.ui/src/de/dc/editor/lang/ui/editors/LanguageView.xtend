@@ -110,7 +110,7 @@ class LanguageView extends ViewPart implements IMenuListener {
 			if (selection instanceof IStructuredSelection) {
 				var IStructuredSelection ss = (selection as IStructuredSelection)
 				if (ss.getFirstElement() instanceof Template) {
-					text.setText(((ss.getFirstElement() as Template)).getPattern())
+					text.setText(((ss.getFirstElement() as Template)).value)
 				}
 			}
 		] as ISelectionChangedListener))
@@ -128,7 +128,7 @@ class LanguageView extends ViewPart implements IMenuListener {
 					var IStructuredSelection ss = (selection as IStructuredSelection)
 					if (ss.getFirstElement() instanceof Template) {
 						var Template template = (ss.getFirstElement() as Template)
-						template.setPattern(text.getText())
+						template.value = text.text
 					}
 					btnApply.setEnabled(false)
 				}

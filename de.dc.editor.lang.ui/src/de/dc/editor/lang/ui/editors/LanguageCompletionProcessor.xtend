@@ -6,9 +6,7 @@ import de.dc.editor.lang.model.Function
 import de.dc.editor.lang.model.Token
 import java.util.ArrayList
 import java.util.HashMap
-import java.util.Iterator
 import java.util.List
-import java.util.Map
 import org.eclipse.emf.common.util.ECollections
 import org.eclipse.jface.text.ITextViewer
 import org.eclipse.jface.text.Region
@@ -65,8 +63,8 @@ class LanguageCompletionProcessor implements IContentAssistProcessor {
 				ECollections.sort(prop.contents, [ o1, o2| o1.name.compareTo(o2.name)])
 				var img = PlatformUI.workbench.sharedImages.getImage(prop.image.getName)
 				for (Content content : prop.contents.filter[it instanceof de.dc.editor.lang.model.Template]) {
-					var String name = content.getName()
-					var String pattern = content.getPattern()
+					var String name = content.name
+					var String pattern = content.value
 					p+=new TemplateProposal(new Template(name, prop.name, CONTEXT_ID, pattern, false), templateContext,region, img)
 				}
 			}
@@ -87,7 +85,7 @@ class LanguageCompletionProcessor implements IContentAssistProcessor {
 				var img = PlatformUI.workbench.sharedImages.getImage(prop.image.getName)
 				for (Content content : prop.contents.filter[it instanceof Function]) {
 					var name = content.name
-					var pattern = content.pattern
+					var pattern = content.value
 					p+=new TemplateProposal(new Template(name, prop.name, CONTEXT_ID, pattern, false), templateContext, region, img)
 				}
 			}
@@ -103,7 +101,7 @@ class LanguageCompletionProcessor implements IContentAssistProcessor {
 				var img = PlatformUI.workbench.sharedImages.getImage(prop.image.getName)
 				for (Content content : prop.contents.filter[it instanceof Token]) {
 					var name = content.name
-					var pattern = content.pattern
+					var pattern = content.value
 					p+=new TemplateProposal(new Template(name, prop.name, CONTEXT_ID, pattern, false), templateContext, region, img)
 				}
 			}
@@ -112,11 +110,11 @@ class LanguageCompletionProcessor implements IContentAssistProcessor {
 
 	def getVariableTemplateProposals(TemplateContext templateContext, Region region,
 		List<ICompletionProposal> p) {
-		var Map<String, String> n = new HashMap()
+		var n = new HashMap
 		var Image img = null
-		for (var Iterator<String> i = n.keySet().iterator(); i.hasNext();) {
-			var String name = (i.next() as String)
-			var String description = (n.get(name) as String)
+		for (var i = n.keySet.iterator; i.hasNext;) {
+			var name = (i.next as String)
+			var description = (n.get(name) as String)
 			p.add(new TemplateProposal(generateVariableTemplate(name, description), templateContext, region, img))
 		}
 	}

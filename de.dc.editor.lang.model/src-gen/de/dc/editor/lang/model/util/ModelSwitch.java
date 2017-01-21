@@ -127,6 +127,7 @@ public class ModelSwitch<T> extends Switch<T> {
 			case ModelPackage.KEY: {
 				Key key = (Key)theEObject;
 				T result = caseKey(key);
+				if (result == null) result = caseContent(key);
 				if (result == null) result = caseNamedElement(key);
 				if (result == null) result = defaultCase(theEObject);
 				return result;

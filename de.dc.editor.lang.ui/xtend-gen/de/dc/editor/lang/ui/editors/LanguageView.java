@@ -148,8 +148,8 @@ public class LanguageView extends ViewPart implements IMenuListener {
         Object _firstElement = ss.getFirstElement();
         if ((_firstElement instanceof Template)) {
           Object _firstElement_1 = ss.getFirstElement();
-          String _pattern = ((Template) _firstElement_1).getPattern();
-          this.text.setText(_pattern);
+          String _value = ((Template) _firstElement_1).getValue();
+          this.text.setText(_value);
         }
       }
     };
@@ -178,7 +178,7 @@ public class LanguageView extends ViewPart implements IMenuListener {
             Object _firstElement_1 = ss.getFirstElement();
             Template template = ((Template) _firstElement_1);
             String _text = LanguageView.this.text.getText();
-            template.setPattern(_text);
+            template.setValue(_text);
           }
           btnApply.setEnabled(false);
         }

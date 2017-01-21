@@ -184,6 +184,11 @@ public class ContentProposalItemProvider extends NamedElementItemProvider {
 			(createChildParameter
 				(ModelPackage.Literals.CONTENT_PROPOSAL__CONTENTS,
 				 ModelFactory.eINSTANCE.createTemplate()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(ModelPackage.Literals.CONTENT_PROPOSAL__CONTENTS,
+				 ModelFactory.eINSTANCE.createKey()));
 	}
 
 }

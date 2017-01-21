@@ -117,7 +117,7 @@ enum Image{
 
 abstract class Content extends NamedElement{
 	String description=""
-	String pattern = ""
+	String value = ""
 }
 
 class Token extends Content{}
@@ -129,8 +129,7 @@ class KeywordGroup extends NamedElement{
 	contains Key[0..*] keyList
 }
 
-class Key extends NamedElement{
-	String value = ""
+class Key extends Content{
 }
 
 class Color extends NamedElement{

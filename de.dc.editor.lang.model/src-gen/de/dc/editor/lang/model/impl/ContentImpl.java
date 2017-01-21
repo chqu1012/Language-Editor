@@ -20,7 +20,7 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
  * </p>
  * <ul>
  *   <li>{@link de.dc.editor.lang.model.impl.ContentImpl#getDescription <em>Description</em>}</li>
- *   <li>{@link de.dc.editor.lang.model.impl.ContentImpl#getPattern <em>Pattern</em>}</li>
+ *   <li>{@link de.dc.editor.lang.model.impl.ContentImpl#getValue <em>Value</em>}</li>
  * </ul>
  *
  * @generated
@@ -47,24 +47,24 @@ public abstract class ContentImpl extends NamedElementImpl implements Content {
 	protected String description = DESCRIPTION_EDEFAULT;
 
 	/**
-	 * The default value of the '{@link #getPattern() <em>Pattern</em>}' attribute.
+	 * The default value of the '{@link #getValue() <em>Value</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getPattern()
+	 * @see #getValue()
 	 * @generated
 	 * @ordered
 	 */
-	protected static final String PATTERN_EDEFAULT = "";
+	protected static final String VALUE_EDEFAULT = "";
 
 	/**
-	 * The cached value of the '{@link #getPattern() <em>Pattern</em>}' attribute.
+	 * The cached value of the '{@link #getValue() <em>Value</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getPattern()
+	 * @see #getValue()
 	 * @generated
 	 * @ordered
 	 */
-	protected String pattern = PATTERN_EDEFAULT;
+	protected String value = VALUE_EDEFAULT;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -111,8 +111,8 @@ public abstract class ContentImpl extends NamedElementImpl implements Content {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public String getPattern() {
-		return pattern;
+	public String getValue() {
+		return value;
 	}
 
 	/**
@@ -120,11 +120,11 @@ public abstract class ContentImpl extends NamedElementImpl implements Content {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void setPattern(String newPattern) {
-		String oldPattern = pattern;
-		pattern = newPattern;
+	public void setValue(String newValue) {
+		String oldValue = value;
+		value = newValue;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, ModelPackage.CONTENT__PATTERN, oldPattern, pattern));
+			eNotify(new ENotificationImpl(this, Notification.SET, ModelPackage.CONTENT__VALUE, oldValue, value));
 	}
 
 	/**
@@ -137,8 +137,8 @@ public abstract class ContentImpl extends NamedElementImpl implements Content {
 		switch (featureID) {
 			case ModelPackage.CONTENT__DESCRIPTION:
 				return getDescription();
-			case ModelPackage.CONTENT__PATTERN:
-				return getPattern();
+			case ModelPackage.CONTENT__VALUE:
+				return getValue();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -154,8 +154,8 @@ public abstract class ContentImpl extends NamedElementImpl implements Content {
 			case ModelPackage.CONTENT__DESCRIPTION:
 				setDescription((String)newValue);
 				return;
-			case ModelPackage.CONTENT__PATTERN:
-				setPattern((String)newValue);
+			case ModelPackage.CONTENT__VALUE:
+				setValue((String)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -172,8 +172,8 @@ public abstract class ContentImpl extends NamedElementImpl implements Content {
 			case ModelPackage.CONTENT__DESCRIPTION:
 				setDescription(DESCRIPTION_EDEFAULT);
 				return;
-			case ModelPackage.CONTENT__PATTERN:
-				setPattern(PATTERN_EDEFAULT);
+			case ModelPackage.CONTENT__VALUE:
+				setValue(VALUE_EDEFAULT);
 				return;
 		}
 		super.eUnset(featureID);
@@ -189,8 +189,8 @@ public abstract class ContentImpl extends NamedElementImpl implements Content {
 		switch (featureID) {
 			case ModelPackage.CONTENT__DESCRIPTION:
 				return DESCRIPTION_EDEFAULT == null ? description != null : !DESCRIPTION_EDEFAULT.equals(description);
-			case ModelPackage.CONTENT__PATTERN:
-				return PATTERN_EDEFAULT == null ? pattern != null : !PATTERN_EDEFAULT.equals(pattern);
+			case ModelPackage.CONTENT__VALUE:
+				return VALUE_EDEFAULT == null ? value != null : !VALUE_EDEFAULT.equals(value);
 		}
 		return super.eIsSet(featureID);
 	}
@@ -207,8 +207,8 @@ public abstract class ContentImpl extends NamedElementImpl implements Content {
 		StringBuffer result = new StringBuffer(super.toString());
 		result.append(" (description: ");
 		result.append(description);
-		result.append(", pattern: ");
-		result.append(pattern);
+		result.append(", value: ");
+		result.append(value);
 		result.append(')');
 		return result.toString();
 	}

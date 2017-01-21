@@ -46,7 +46,7 @@ public class ContentItemProvider extends NamedElementItemProvider {
 			super.getPropertyDescriptors(object);
 
 			addDescriptionPropertyDescriptor(object);
-			addPatternPropertyDescriptor(object);
+			addValuePropertyDescriptor(object);
 		}
 		return itemPropertyDescriptors;
 	}
@@ -74,19 +74,19 @@ public class ContentItemProvider extends NamedElementItemProvider {
 	}
 
 	/**
-	 * This adds a property descriptor for the Pattern feature.
+	 * This adds a property descriptor for the Value feature.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected void addPatternPropertyDescriptor(Object object) {
+	protected void addValuePropertyDescriptor(Object object) {
 		itemPropertyDescriptors.add
 			(createItemPropertyDescriptor
 				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
 				 getResourceLocator(),
-				 getString("_UI_Content_pattern_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_Content_pattern_feature", "_UI_Content_type"),
-				 ModelPackage.Literals.CONTENT__PATTERN,
+				 getString("_UI_Content_value_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_Content_value_feature", "_UI_Content_type"),
+				 ModelPackage.Literals.CONTENT__VALUE,
 				 true,
 				 false,
 				 false,
@@ -123,7 +123,7 @@ public class ContentItemProvider extends NamedElementItemProvider {
 
 		switch (notification.getFeatureID(Content.class)) {
 			case ModelPackage.CONTENT__DESCRIPTION:
-			case ModelPackage.CONTENT__PATTERN:
+			case ModelPackage.CONTENT__VALUE:
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
 				return;
 		}

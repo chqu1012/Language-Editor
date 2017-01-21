@@ -279,13 +279,13 @@ public interface ModelPackage extends EPackage {
 	int CONTENT__DESCRIPTION = NAMED_ELEMENT_FEATURE_COUNT + 0;
 
 	/**
-	 * The feature id for the '<em><b>Pattern</b></em>' attribute.
+	 * The feature id for the '<em><b>Value</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int CONTENT__PATTERN = NAMED_ELEMENT_FEATURE_COUNT + 1;
+	int CONTENT__VALUE = NAMED_ELEMENT_FEATURE_COUNT + 1;
 
 	/**
 	 * The number of structural features of the '<em>Content</em>' class.
@@ -334,13 +334,13 @@ public interface ModelPackage extends EPackage {
 	int TOKEN__DESCRIPTION = CONTENT__DESCRIPTION;
 
 	/**
-	 * The feature id for the '<em><b>Pattern</b></em>' attribute.
+	 * The feature id for the '<em><b>Value</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int TOKEN__PATTERN = CONTENT__PATTERN;
+	int TOKEN__VALUE = CONTENT__VALUE;
 
 	/**
 	 * The number of structural features of the '<em>Token</em>' class.
@@ -389,13 +389,13 @@ public interface ModelPackage extends EPackage {
 	int FUNCTION__DESCRIPTION = CONTENT__DESCRIPTION;
 
 	/**
-	 * The feature id for the '<em><b>Pattern</b></em>' attribute.
+	 * The feature id for the '<em><b>Value</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int FUNCTION__PATTERN = CONTENT__PATTERN;
+	int FUNCTION__VALUE = CONTENT__VALUE;
 
 	/**
 	 * The number of structural features of the '<em>Function</em>' class.
@@ -444,13 +444,13 @@ public interface ModelPackage extends EPackage {
 	int TEMPLATE__DESCRIPTION = CONTENT__DESCRIPTION;
 
 	/**
-	 * The feature id for the '<em><b>Pattern</b></em>' attribute.
+	 * The feature id for the '<em><b>Value</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int TEMPLATE__PATTERN = CONTENT__PATTERN;
+	int TEMPLATE__VALUE = CONTENT__VALUE;
 
 	/**
 	 * The number of structural features of the '<em>Template</em>' class.
@@ -542,7 +542,16 @@ public interface ModelPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int KEY__NAME = NAMED_ELEMENT__NAME;
+	int KEY__NAME = CONTENT__NAME;
+
+	/**
+	 * The feature id for the '<em><b>Description</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int KEY__DESCRIPTION = CONTENT__DESCRIPTION;
 
 	/**
 	 * The feature id for the '<em><b>Value</b></em>' attribute.
@@ -551,7 +560,7 @@ public interface ModelPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int KEY__VALUE = NAMED_ELEMENT_FEATURE_COUNT + 0;
+	int KEY__VALUE = CONTENT__VALUE;
 
 	/**
 	 * The number of structural features of the '<em>Key</em>' class.
@@ -560,7 +569,7 @@ public interface ModelPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int KEY_FEATURE_COUNT = NAMED_ELEMENT_FEATURE_COUNT + 1;
+	int KEY_FEATURE_COUNT = CONTENT_FEATURE_COUNT + 0;
 
 	/**
 	 * The number of operations of the '<em>Key</em>' class.
@@ -569,7 +578,7 @@ public interface ModelPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int KEY_OPERATION_COUNT = NAMED_ELEMENT_OPERATION_COUNT + 0;
+	int KEY_OPERATION_COUNT = CONTENT_OPERATION_COUNT + 0;
 
 	/**
 	 * The meta object id for the '{@link de.dc.editor.lang.model.impl.ColorImpl <em>Color</em>}' class.
@@ -808,15 +817,15 @@ public interface ModelPackage extends EPackage {
 	EAttribute getContent_Description();
 
 	/**
-	 * Returns the meta object for the attribute '{@link de.dc.editor.lang.model.Content#getPattern <em>Pattern</em>}'.
+	 * Returns the meta object for the attribute '{@link de.dc.editor.lang.model.Content#getValue <em>Value</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Pattern</em>'.
-	 * @see de.dc.editor.lang.model.Content#getPattern()
+	 * @return the meta object for the attribute '<em>Value</em>'.
+	 * @see de.dc.editor.lang.model.Content#getValue()
 	 * @see #getContent()
 	 * @generated
 	 */
-	EAttribute getContent_Pattern();
+	EAttribute getContent_Value();
 
 	/**
 	 * Returns the meta object for class '{@link de.dc.editor.lang.model.Token <em>Token</em>}'.
@@ -889,17 +898,6 @@ public interface ModelPackage extends EPackage {
 	 * @generated
 	 */
 	EClass getKey();
-
-	/**
-	 * Returns the meta object for the attribute '{@link de.dc.editor.lang.model.Key#getValue <em>Value</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Value</em>'.
-	 * @see de.dc.editor.lang.model.Key#getValue()
-	 * @see #getKey()
-	 * @generated
-	 */
-	EAttribute getKey_Value();
 
 	/**
 	 * Returns the meta object for class '{@link de.dc.editor.lang.model.Color <em>Color</em>}'.
@@ -1106,12 +1104,12 @@ public interface ModelPackage extends EPackage {
 		EAttribute CONTENT__DESCRIPTION = eINSTANCE.getContent_Description();
 
 		/**
-		 * The meta object literal for the '<em><b>Pattern</b></em>' attribute feature.
+		 * The meta object literal for the '<em><b>Value</b></em>' attribute feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EAttribute CONTENT__PATTERN = eINSTANCE.getContent_Pattern();
+		EAttribute CONTENT__VALUE = eINSTANCE.getContent_Value();
 
 		/**
 		 * The meta object literal for the '{@link de.dc.editor.lang.model.impl.TokenImpl <em>Token</em>}' class.
@@ -1178,14 +1176,6 @@ public interface ModelPackage extends EPackage {
 		 * @generated
 		 */
 		EClass KEY = eINSTANCE.getKey();
-
-		/**
-		 * The meta object literal for the '<em><b>Value</b></em>' attribute feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EAttribute KEY__VALUE = eINSTANCE.getKey_Value();
 
 		/**
 		 * The meta object literal for the '{@link de.dc.editor.lang.model.impl.ColorImpl <em>Color</em>}' class.

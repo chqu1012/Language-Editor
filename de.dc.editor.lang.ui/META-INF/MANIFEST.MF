@@ -23,7 +23,6 @@ Require-Bundle: org.eclipse.core.runtime,
 Bundle-RequiredExecutionEnvironment: JavaSE-1.8
 Bundle-ClassPath: .
 Export-Package: de.dc.editor.lang.ui.editors,
- de.dc.editor.lang.ui.editors.custom,
  de.dc.editor.lang.ui.editors.generic,
  de.dc.editor.lang.ui.file,
  de.dc.editor.lang.ui.preference,

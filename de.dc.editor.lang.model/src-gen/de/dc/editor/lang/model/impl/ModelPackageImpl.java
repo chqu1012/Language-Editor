@@ -313,7 +313,7 @@ public class ModelPackageImpl extends EPackageImpl implements ModelPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getContent_Pattern() {
+	public EAttribute getContent_Value() {
 		return (EAttribute)contentEClass.getEStructuralFeatures().get(1);
 	}
 
@@ -378,15 +378,6 @@ public class ModelPackageImpl extends EPackageImpl implements ModelPackage {
 	 */
 	public EClass getKey() {
 		return keyEClass;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EAttribute getKey_Value() {
-		return (EAttribute)keyEClass.getEStructuralFeatures().get(0);
 	}
 
 	/**
@@ -480,7 +471,7 @@ public class ModelPackageImpl extends EPackageImpl implements ModelPackage {
 
 		contentEClass = createEClass(CONTENT);
 		createEAttribute(contentEClass, CONTENT__DESCRIPTION);
-		createEAttribute(contentEClass, CONTENT__PATTERN);
+		createEAttribute(contentEClass, CONTENT__VALUE);
 
 		tokenEClass = createEClass(TOKEN);
 
@@ -493,7 +484,6 @@ public class ModelPackageImpl extends EPackageImpl implements ModelPackage {
 		createEReference(keywordGroupEClass, KEYWORD_GROUP__KEY_LIST);
 
 		keyEClass = createEClass(KEY);
-		createEAttribute(keyEClass, KEY__VALUE);
 
 		colorEClass = createEClass(COLOR);
 		createEAttribute(colorEClass, COLOR__R);
@@ -542,7 +532,7 @@ public class ModelPackageImpl extends EPackageImpl implements ModelPackage {
 		functionEClass.getESuperTypes().add(this.getContent());
 		templateEClass.getESuperTypes().add(this.getContent());
 		keywordGroupEClass.getESuperTypes().add(this.getNamedElement());
-		keyEClass.getESuperTypes().add(this.getNamedElement());
+		keyEClass.getESuperTypes().add(this.getContent());
 		colorEClass.getESuperTypes().add(this.getNamedElement());
 
 		// Initialize classes, features, and operations; add parameters
@@ -564,7 +554,7 @@ public class ModelPackageImpl extends EPackageImpl implements ModelPackage {
 
 		initEClass(contentEClass, Content.class, "Content", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getContent_Description(), theEcorePackage.getEString(), "description", "", 0, 1, Content.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getContent_Pattern(), theEcorePackage.getEString(), "pattern", "", 0, 1, Content.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getContent_Value(), theEcorePackage.getEString(), "value", "", 0, 1, Content.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(tokenEClass, Token.class, "Token", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
@@ -577,7 +567,6 @@ public class ModelPackageImpl extends EPackageImpl implements ModelPackage {
 		initEReference(getKeywordGroup_KeyList(), this.getKey(), null, "keyList", null, 0, -1, KeywordGroup.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(keyEClass, Key.class, "Key", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEAttribute(getKey_Value(), theEcorePackage.getEString(), "value", "", 0, 1, Key.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(colorEClass, Color.class, "Color", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getColor_R(), theEcorePackage.getEInt(), "r", "0", 0, 1, Color.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);

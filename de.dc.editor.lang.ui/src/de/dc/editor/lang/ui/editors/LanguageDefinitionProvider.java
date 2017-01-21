@@ -56,4 +56,14 @@ public enum LanguageDefinitionProvider {
 		}
 		return definitions.get(fileExtension);
 	}
+	
+	public void addNewFileExtensionToRegistry(String newDefinitionPath){
+		String pathsString = PlatformUI.getPreferenceStore().getString(ILanguageConstants.LANGUAGE_FILES_PATH);
+		if(pathsString.length()>0){
+			pathsString=pathsString+"#"+newDefinitionPath;
+		}else{
+			pathsString=newDefinitionPath;
+		}
+		PlatformUI.getPreferenceStore().setValue(ILanguageConstants.LANGUAGE_FILES_PATH, pathsString);
+	}
 }
