@@ -36,12 +36,16 @@ Dynamic change of the content proposal icons
 * Added language definition preference page
 * Bugfix: NPE when no definition is recognized
 
+<<<<<<< Upstream, based on branch 'master' of https://github.com/chqu1012/Language-Editor.git
 ### 0.1.1
+=======
+#### 0.1.1
+>>>>>>> d1dfe59 LDF-00032: Added popup for templates
 * Integrating filter in the language definition editor
 * File extension recognition
 * Image customizing
 
-### 0.1.0
+#### 0.1.0
 * Initial version
 
 ### Third libraries

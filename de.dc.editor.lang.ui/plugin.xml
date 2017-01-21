@@ -59,6 +59,13 @@
                enablesFor="1"
                id="de.dc.editor.lang.ui.editors.OpenLanguageDataModel">
          </action>
+         <action
+               class="de.dc.editor.lang.ui.editors.action.SelectionToContentProposalAction"
+               enablesFor="1"
+               id="de.dc.editor.lang.ui.editors.ExportToContentProposal"
+               label="Export to Content Proposal"
+               menubarPath="de.dc.editor.lang.ui.editors.LangEditor.menu1/group1">
+         </action>
       </objectContribution>
    </extension>
 </plugin>
