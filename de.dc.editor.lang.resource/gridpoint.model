@@ -1,8 +1,10 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml version="1.0" encoding="ASCII"?>
 <model:LanguageDefinition xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:model="de.dc.editor.lang.model" name="Gridpoint" fileExtension="gpt">
   <contentProposals name="Maths" image="IMG_ELCL_REMOVE_DISABLED">
     <contents xsi:type="model:Token" name="abs" pattern="abs"/>
     <contents xsi:type="model:Token" name="sqrt" pattern="sqrt"/>
+    <contents xsi:type="model:Template" name="INSERT TO %{TABLE}" pattern="INSERT TO %{TABLE}"/>
+    <contents xsi:type="model:Template" name="INSERT TO ${TABLE}" pattern="INSERT TO ${TABLE}"/>
   </contentProposals>
   <keywordGroups name="Maths">
     <color g="255"/>

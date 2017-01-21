@@ -4,9 +4,7 @@ import de.dc.editor.lang.model.Content
 import de.dc.editor.lang.model.ContentProposal
 import de.dc.editor.lang.model.Function
 import de.dc.editor.lang.model.Token
-import de.dc.editor.lang.ui.file.LangFile
 import java.util.ArrayList
-import java.util.Collections
 import java.util.HashMap
 import java.util.Iterator
 import java.util.List
@@ -68,9 +66,8 @@ class LanguageCompletionProcessor implements IContentAssistProcessor {
 				var img = PlatformUI.workbench.sharedImages.getImage(prop.image.getName)
 				for (Content content : prop.contents.filter[it instanceof de.dc.editor.lang.model.Template]) {
 					var String name = content.getName()
-					var String descr = content.getDescription()
 					var String pattern = content.getPattern()
-					p+=new TemplateProposal(new Template(name, descr, CONTEXT_ID, pattern, false), templateContext,region, img)
+					p+=new TemplateProposal(new Template(name, prop.name, CONTEXT_ID, pattern, false), templateContext,region, img)
 				}
 			}
 		}
@@ -90,9 +87,8 @@ class LanguageCompletionProcessor implements IContentAssistProcessor {
 				var img = PlatformUI.workbench.sharedImages.getImage(prop.image.getName)
 				for (Content content : prop.contents.filter[it instanceof Function]) {
 					var name = content.name
-					var descr = content.description
 					var pattern = content.pattern
-					p+=new TemplateProposal(new Template(name, descr, CONTEXT_ID, pattern, false), templateContext, region, img)
+					p+=new TemplateProposal(new Template(name, prop.name, CONTEXT_ID, pattern, false), templateContext, region, img)
 				}
 			}
 		}
@@ -107,9 +103,8 @@ class LanguageCompletionProcessor implements IContentAssistProcessor {
 				var img = PlatformUI.workbench.sharedImages.getImage(prop.image.getName)
 				for (Content content : prop.contents.filter[it instanceof Token]) {
 					var name = content.name
-					var descr = content.description
 					var pattern = content.pattern
-					p+=new TemplateProposal(new Template(name, descr, CONTEXT_ID, pattern, false), templateContext, region, img)
+					p+=new TemplateProposal(new Template(name, prop.name, CONTEXT_ID, pattern, false), templateContext, region, img)
 				}
 			}
 		}
